@@ -15,7 +15,7 @@ cd entry-tests
 ```
 All'interno della directory troverai una struttura di cartelle organizzate per ciascun esercizio, dentro ognuna di esse troverai un file `README.md`con il quesito da risolvere.
 
-Sottometti le tue soluzioni creando un fork di questo repository e inviando una pull request con le tue modifiche. Assicurati di seguire il [GitFlow]() e le linee guida specificate nelle istruzioni di sottomissione.
+Sottometti le tue soluzioni creando un fork di questo repository e inviando una pull request con le tue modifiche. Assicurati di seguire il [GitFlow](https://gist.github.com/mastrobirraio/b254372cf58df221fd1dd4243b672fb3) e le linee guida specificate nelle istruzioni di sottomissione.
 
 ### Linee Guida per la Sottomissione delle Soluzioni
 * Assicurati che il tuo codice sia ben commentato e che segua le migliori pratiche di programmazione.
