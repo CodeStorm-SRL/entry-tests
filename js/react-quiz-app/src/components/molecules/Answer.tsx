@@ -36,17 +36,21 @@ const Answer: FC<AnswerProps> = ({
   // Se la risposta è stata data ed è corretta: feedback success, altrimenti feedback danger
   // Se la risposta non è stata data: stile che cambia se l'utente ha selezionato o no una risposta
   const classNames = submittedAnswer
-    ? `${feedback ? "bg-green-700" : ""} ${
-        !feedback && active ? "bg-red-500" : ""
+    ? `${feedback ? "bg-secondary translate-x-3" : ""} ${
+        !feedback && active ? "bg-danger translate-x-2 border-primary" : ""
       }`
-    : `${active ? "bg-blue-400" : "hover:bg-orange-200"}`;
+    : `${
+        active
+          ? "bg-secondary translate-x-3"
+          : "hover:bg-secondary hover:translate-x-3"
+      }`;
 
   return (
     <div
-      className={`${classNames} p-x3 py-5 cursor-pointer`}
+      className={`${classNames} p-x3 py-5 cursor-pointer btn`}
       onClick={() => onClick(id, children)}
     >
-      <Text variant="secondary">{children}</Text>
+      <Text isDark={!feedback && active ? true : false}>{children}</Text>
     </div>
   );
 };
