@@ -60,7 +60,7 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
           </Answer>
         ))}
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pt-3">
           <Text>Your score: {score}</Text>
           {!submittedAnswer ? (
             <Button onClick={handleSubmitAnswer} disabled={disableButton}>
