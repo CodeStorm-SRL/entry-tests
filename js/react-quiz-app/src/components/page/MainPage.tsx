@@ -5,6 +5,9 @@ import { FC, useEffect } from "react";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { useNavigate } from "react-router-dom";
 import Button from "../atoms/Button";
+import { arrOfQuestions } from "../../data";
+
+const numOfQuestions = arrOfQuestions.length;
 
 const MainPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,12 +27,13 @@ const MainPage: FC = () => {
   );
 
   return (
-    <>
-      <Text>MAIN PAGE</Text>
+    <div className="flex flex-col items-center">
+      <Text as="h2">Welcome to the Quiz</Text>
+      <Text as="h4">{numOfQuestions} questions to test your Mastery</Text>
       <Button variant="primary" onClick={handleStartQuiz}>
         Start Quiz
       </Button>
-    </>
+    </div>
   );
 };
 

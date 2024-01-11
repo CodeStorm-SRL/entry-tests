@@ -7,7 +7,7 @@ import Main from "../template/Main";
 // il suo contenuto in base alla pagina
 const AppLayout: FC = () => {
   return (
-    <div className="flex flex-col min-h-[100vh] bg-dark">
+    <div className="flex flex-col min-h-[100vh] bg-dark px-5 py-3">
       <Header />
       <Main />
       <Footer />
