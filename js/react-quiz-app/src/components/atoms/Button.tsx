@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = ({
   // Seleziono uno stile in base alla variante, selezionando
   // la proprietà di styles attraverso bracket notation (styles[variant])
   const styles: Record<ButtonVariant, string> = {
-    primary: "bg-regal-blue p-5",
+    primary: "bg-primary p-5",
     secondary: "bg-red-500 p-5",
     disabled: "opacity-75 cursor-not-allowed",
   };
