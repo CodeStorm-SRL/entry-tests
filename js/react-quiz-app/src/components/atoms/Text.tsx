@@ -25,7 +25,7 @@ const Text: FC<TextProps> = ({
 
   // Stile in base alla variante e al tag
   const styles: Record<TextTags, string> = {
-    h1: "text-h1",
+    h1: "text-h1r md-text-h1 leading-[1.2]",
     h2: "text-h2",
     h4: "text-h4",
     p: "text-md",
@@ -38,7 +38,7 @@ const Text: FC<TextProps> = ({
   } ${customClassName ? customClassName : ""}`;
 
   return (
-    <El {...attributes} className={classNames}>
+    <El {...attributes} className={classNames + " "}>
       {children}
     </El>
   );
