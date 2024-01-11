@@ -17,7 +17,7 @@ const Section: FC<SectionProps> = ({
 }) => {
   const El = as;
 
-  const classNames = `flex flex-col items-center justify-center flex-grow px-5 mx-auto min-w-[1024px]`;
+  const classNames = `flex flex-col items-center justify-center flex-grow px-5 mx-auto max-w-[1024px]`;
 
   return (
     <El className={classNames} {...attributes}>
