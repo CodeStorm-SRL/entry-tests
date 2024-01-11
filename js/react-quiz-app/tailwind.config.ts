@@ -15,6 +15,11 @@ export default {
         light: "#f1f3f5",
         danger: "#ffa94d",
       },
+      fontSize: {
+        h1: "5.6rem",
+        h2: "3.6rem",
+        h4: "2.2rem",
+      },
     },
   },
   plugins: [],
