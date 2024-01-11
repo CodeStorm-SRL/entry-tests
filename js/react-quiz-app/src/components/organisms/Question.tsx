@@ -43,11 +43,11 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
   const disableButton = !(!submittedAnswer && selected !== null);
 
   return (
-    <div className="max-w-[600px] flex flex-col items-center text-center">
+    <div className="max-w-[600px] flex flex-col items-center text-center pt-5">
       <Text as="h4" isBold>
         {question}
       </Text>
-      <div className="text-start w-full py-5 px-3 space-y-3">
+      <div className="text-start w-full py-8 px-3 space-y-3">
         {answers.map((answer, i) => (
           <Answer
             key={i + id}
