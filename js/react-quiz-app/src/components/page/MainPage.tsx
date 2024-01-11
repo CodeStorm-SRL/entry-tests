@@ -26,7 +26,9 @@ const MainPage: FC = () => {
   return (
     <>
       <Text variant="primary">MAIN PAGE</Text>
-      <Button onClick={handleStartQuiz}>Start Quiz</Button>
+      <Button variant="primary" onClick={handleStartQuiz}>
+        Start Quiz
+      </Button>
     </>
   );
 };

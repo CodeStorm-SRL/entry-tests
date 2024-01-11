@@ -4,6 +4,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+@layer components {
+  .btn {
+    @apply text-lg text-light min-w-[170px] py-3 px-5 border-2 rounded-full;
+  }
+}
+
 * {
   transition: all 0.3s;
 }
