@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+// import { useState } from 'react'
+
+//iniziamo impostando il routing. App.jsx mi servirà solo per il routing
+//installo react-router-dom e react-dom
+//importo il metodo createBrowserRouter
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+//importo la HomePage
+import HomePage from "./pages/HomePage/HomePage.jsx";
+//importo la pagine di errore
+import ErrorRoute from "./pages/ErrorRoute/ErrorRoute.jsx";
+//creo la costante route con i path ai componenti
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage></HomePage>,
+    errorElement: <ErrorRoute></ErrorRoute>,
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* la nostra App.jsx ci restituisce solo quindi il routing */}
+      <RouterProvider router={router}></RouterProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
