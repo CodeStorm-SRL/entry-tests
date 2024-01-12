@@ -1,3 +1,5 @@
+export const POINT_PER_QUESTION = 10;
+
 export type QuestionType = {
   id: number;
   question: string;

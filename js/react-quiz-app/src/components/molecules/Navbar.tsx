@@ -15,7 +15,11 @@ const Navbar: FC = () => {
     <nav className="px-3 py-5 text-center">
       <Text
         as="h1"
-        className={notInMainPage ? "cursor-pointer inline-block" : ""}
+        className={
+          notInMainPage
+            ? "cursor-pointer inline-block hover:text-secondary"
+            : ""
+        }
         onClick={backToMainPage}
       >
         The Quiz

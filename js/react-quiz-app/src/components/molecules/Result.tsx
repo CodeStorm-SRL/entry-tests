@@ -20,18 +20,18 @@ const Result: FC<ResultProps> & { Span: React.FC<SpanProps> } = ({
   const userAnswerIsCorrect = correctAnswer === userAnswer;
   return (
     <li>
-      <Text isBold>
+      <Text isBold styledAs="h5">
         {numQuestion}. {children}
       </Text>
       <div className="mt-2">
-        <Text>
+        <Text styledAs="h6">
           Your answer:
           <Result.Span isCorrect={userAnswerIsCorrect}>
             {userAnswer}
           </Result.Span>
         </Text>
         {!userAnswerIsCorrect && (
-          <Text>
+          <Text styledAs="h6">
             Correct answer:
             <Result.Span isCorrect>{userAnswer}</Result.Span>
           </Text>
