@@ -43,7 +43,7 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
   const disableButton = !(!submittedAnswer && selected !== null);
 
   return (
-    <div className="max-w-[600px] flex flex-col items-center text-center pt-5">
+    <div className="max-w-[600px] flex flex-col items-center text-center pt-5 animate-slide-up">
       <Text as="h4" isBold>
         {question}
       </Text>

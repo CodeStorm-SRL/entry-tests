@@ -22,6 +22,6 @@ const QuizPage = () => {
   );
 
   if (!numOfQuestions) return null;
-  return <Question questionObj={arrOfQuestions[index]} />;
+  return <Question key={index} questionObj={arrOfQuestions[index]} />;
 };
 export default QuizPage;

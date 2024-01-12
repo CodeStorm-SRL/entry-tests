@@ -29,7 +29,7 @@ const MainPage: FC = () => {
   if (!numOfQuestions) return <Text as="h2">No questions 😥</Text>;
 
   return (
-    <div className="flex flex-col items-center space-y-8">
+    <div className="flex flex-col items-center space-y-8  animate-slide-up">
       <div className="space-y-3 text-center">
         <Text as="h2">Welcome to the Quiz</Text>
         <Text as="h4">{numOfQuestions} questions to test your Mastery</Text>
