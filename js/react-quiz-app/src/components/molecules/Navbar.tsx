@@ -1,11 +1,12 @@
 import { FC } from "react";
 import Text from "../atoms/Text";
 
-import useMainNav from "../../hooks/useMainNav";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar: FC = () => {
-  const { appState, navigate } = useMainNav();
-  const notInMainPage = appState !== "start";
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const notInMainPage = pathname !== "/";
 
   function backToMainPage(): void {
     if (notInMainPage) navigate("/");

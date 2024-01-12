@@ -9,6 +9,7 @@ const MainPage = lazy(() => import("./components/page/MainPage"));
 const EndPage = lazy(() => import("./components/page/EndPage"));
 const QuizPage = lazy(() => import("./components/page/QuizPage"));
 const ResultPage = lazy(() => import("./components/page/ResultPage"));
+const NotFoundPage = lazy(() => import("./components/page/NotFoundPage"));
 
 const App: FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: FC = () => {
               <Route path="/quiz" element={<QuizPage />} />
               <Route path="/end" element={<EndPage />} />
               <Route path="/result" element={<ResultPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </Suspense>
