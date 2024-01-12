@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { saveGame } from "../../store/userSlice";
 import { initialSettings } from "../../store/quizSlice";
 import toast from "react-hot-toast";
+import { POINT_PER_QUESTION } from "../../data";
 
 const EndPage = () => {
   const { score, arrOfQuestions } = useAppSelector((state) => state.quiz);
@@ -15,7 +16,7 @@ const EndPage = () => {
   const [gameSaved, setGameSaved] = useState(false);
   const { appState, navigate } = useMainNav();
 
-  const maxScore = arrOfQuestions.length;
+  const maxScore = arrOfQuestions.length * POINT_PER_QUESTION;
 
   useEffect(
     function () {
