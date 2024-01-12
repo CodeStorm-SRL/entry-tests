@@ -17,12 +17,7 @@ const Section: FC<SectionProps> = ({
 }) => {
   const El = as;
 
-  // Possibilità di aggiungere stile al componente quando istanziato
-  const { className: customClassNames } = attributes;
-
-  const classNames = `flex flex-col items-center justify-center flex-grow w-full ${
-    customClassNames ? customClassNames : ""
-  }`;
+  const classNames = `flex flex-col items-center justify-center flex-grow px-5 mx-auto max-w-[1024px]`;
 
   return (
     <El className={classNames} {...attributes}>
