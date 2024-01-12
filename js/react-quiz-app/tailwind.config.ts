@@ -13,7 +13,7 @@ export default {
         dark: "#343a40",
         medium: "#ced4da",
         light: "#f1f3f5",
-        danger: "#ffa94d",
+        danger: "#ff7d4d",
       },
       fontSize: {
         h1: "5.6rem",
