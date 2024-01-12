@@ -25,6 +25,8 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
   const {
     selected, // risposta selezionata
     submittedAnswer, // risposta effettuata
+    numOfQuestions, // Numero di domande totale
+    numCurrentQuestion, // Numero domanda corrente
     handleNextQuestion, // vado alla prossima domanda
     handleSubmitAnswer, // effettuo la risposta
     handleSelected, // seleziono la risposta
@@ -47,6 +49,11 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
       <Text as="h4" isBold>
         {question}
       </Text>
+      <div className="w-full text-right">
+        <Text>
+          {numCurrentQuestion}/{numOfQuestions}
+        </Text>
+      </div>
       <div className="text-start w-full py-8 px-3 space-y-3">
         {answers.map((answer, i) => (
           <Answer
@@ -61,7 +68,9 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
         ))}
 
         <div className="flex justify-between items-center pt-3">
-          <Text>Your score: {score}</Text>
+          <Text>
+            Your score: <b>{score}</b>
+          </Text>
           {!submittedAnswer ? (
             <Button onClick={handleSubmitAnswer} disabled={disableButton}>
               Sumbit answer
