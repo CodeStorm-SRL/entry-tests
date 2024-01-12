@@ -49,12 +49,12 @@ const Question: FC<QuestionProps> = ({ questionObj }) => {
       <Text as="h4" isBold>
         {question}
       </Text>
-      <div className="w-full text-right">
+      <div className="w-full text-end pt-3 px-3">
         <Text>
           {numCurrentQuestion}/{numOfQuestions}
         </Text>
       </div>
-      <div className="text-start w-full py-8 px-3 space-y-3">
+      <div className="text-start w-full py-6 px-3 space-y-3">
         {answers.map((answer, i) => (
           <Answer
             key={i + id}
