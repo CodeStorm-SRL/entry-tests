@@ -3,12 +3,12 @@ import AppLayout from "./components/layout/AppLayout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import CustomToaster from "./components/molecules/CustomToaster";
-import ResultPage from "./components/page/ResultPage";
-import { Loader } from "./components/molecules/Loader";
+import Loader from "./components/molecules/Loader";
 
 const MainPage = lazy(() => import("./components/page/MainPage"));
 const EndPage = lazy(() => import("./components/page/EndPage"));
 const QuizPage = lazy(() => import("./components/page/QuizPage"));
+const ResultPage = lazy(() => import("./components/page/ResultPage"));
 
 const App: FC = () => {
   return (

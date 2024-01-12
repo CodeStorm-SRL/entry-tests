@@ -1,10 +1,11 @@
 import { FC } from "react";
 import Spinner from "../atoms/Spinner";
 
-export const Loader: FC = () => {
+const Loader: FC = () => {
   return (
     <div className="spinnerContainer">
       <Spinner />
     </div>
   );
 };
+export default Loader;
