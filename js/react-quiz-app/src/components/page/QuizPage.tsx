@@ -22,10 +22,6 @@ const QuizPage = () => {
   );
 
   if (!numOfQuestions) return null;
-  return (
-    <div className="w-full">
-      <Question questionObj={arrOfQuestions[index]} />
-    </div>
-  );
+  return <Question questionObj={arrOfQuestions[index]} />;
 };
 export default QuizPage;
