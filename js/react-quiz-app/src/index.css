@@ -8,6 +8,9 @@
   .btn {
     @apply text-lg text-light min-w-[170px] py-3 px-5 border-2 rounded-full;
   }
+  .spinnerContainer {
+    @apply absolute inset-0 flex items-center justify-center;
+  }
 }
 
 * {
