@@ -13,6 +13,7 @@ interface QuizState {
   arrOfQuestions: QuestionType[];
   score: number;
   index: number;
+  userAnswers: string[];
 }
 
 const initialState: QuizState = {
@@ -20,6 +21,7 @@ const initialState: QuizState = {
   arrOfQuestions: [],
   score: 0,
   index: 0,
+  userAnswers: [],
 };
 
 export const quizSlice = createSlice({
@@ -41,6 +43,7 @@ export const quizSlice = createSlice({
       if (state.arrOfQuestions[state.index].correctAnswer === payload) {
         state.score += 10;
       }
+      state.userAnswers.push(payload);
     },
     nextQuestion: (state) => {
       // passo alla prossima domanda

@@ -5,6 +5,7 @@ import MainPage from "./components/page/MainPage";
 import EndPage from "./components/page/EndPage";
 import QuizPage from "./components/page/QuizPage";
 import CustomToaster from "./components/molecules/CustomToaster";
+import ResultPage from "./components/page/ResultPage";
 
 const App: FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: FC = () => {
             <Route path="/" element={<MainPage />} />
             <Route path="/quiz" element={<QuizPage />} />
             <Route path="/end" element={<EndPage />} />
+            <Route path="/result" element={<ResultPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
