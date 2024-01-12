@@ -31,9 +31,9 @@ const EndPage = () => {
   }
 
   return (
-    <div className="w-full">
-      <Text variant="primary">END PAGE</Text>
-      <Text variant="primary">Your score is: {score}</Text>
+    <div className="animate-slide-up">
+      <Text>END PAGE</Text>
+      <Text>Your score is: {score}</Text>
       <Button onClick={restart}>Restart</Button>
       {gameSaved && <Text>Game saved!</Text>}
       {!gameSaved && score > userRecord && (

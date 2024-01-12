@@ -2,10 +2,9 @@ import { useEffect } from "react";
 import { useAppSelector } from "../../hooks/reduxHooks";
 import Question from "../organisms/Question";
 import { useNavigate } from "react-router-dom";
-import Text from "../atoms/Text";
 
 const QuizPage = () => {
-  const { index, arrOfQuestions, appState, score } = useAppSelector(
+  const { index, arrOfQuestions, appState } = useAppSelector(
     (state) => state.quiz
   );
   // Numero di domande
@@ -23,11 +22,6 @@ const QuizPage = () => {
   );
 
   if (!numOfQuestions) return null;
-  return (
-    <div className="w-full">
-      <Question questionObj={arrOfQuestions[index]} />
-      <Text>Your score: {score}</Text>
-    </div>
-  );
+  return <Question key={index} questionObj={arrOfQuestions[index]} />;
 };
 export default QuizPage;
