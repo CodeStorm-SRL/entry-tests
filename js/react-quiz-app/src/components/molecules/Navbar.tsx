@@ -19,7 +19,7 @@ const Navbar: FC = () => {
         className={
           notInMainPage ? "cursor-pointer inline-block hover:translate-y-1" : ""
         }
-        isDanger
+        color="danger"
         onClick={backToMainPage}
       >
         The Quiz
