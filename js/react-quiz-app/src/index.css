@@ -20,6 +20,7 @@
 body {
   background-image: url("/assets/rm218-bb-07.jpg");
   background-size: cover;
+  min-height: 100vh;
 }
 
 @keyframes slideUp {

@@ -41,8 +41,8 @@ const Answer: FC<AnswerProps> = ({
       }`
     : `${
         active
-          ? "bg-secondary translate-x-3"
-          : "hover:bg-secondary hover:translate-x-3"
+          ? "bg-secondary translate-x-4"
+          : "opacity-90 hover:bg-secondary hover:translate-x-2 hover:opacity-100"
       }`;
 
   return (
@@ -50,7 +50,7 @@ const Answer: FC<AnswerProps> = ({
       className={`${classNames} p-x3 py-5 cursor-pointer btn custom-animate-bounce`}
       onClick={() => onClick(id, children)}
     >
-      <Text isDark={!feedback && active ? true : false}>{children}</Text>
+      <Text>{children}</Text>
     </div>
   );
 };
