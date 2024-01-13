@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .spinnerContainer {
+    @apply absolute inset-0 flex items-center justify-center;
+  }
+}
+
 :root {
   --primary-color: #0185ff;
   --secondary-color: #cbd9e7;
