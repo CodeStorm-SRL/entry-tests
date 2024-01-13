@@ -1,23 +1,24 @@
 import Button from "../atoms/Button";
-import Text from "../atoms/Text";
 
 import useMainNav from "../../hooks/useMainNav";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { saveGame } from "../../store/userSlice";
-import { initialSettings } from "../../store/quizSlice";
-import toast from "react-hot-toast";
-import { POINT_PER_QUESTION } from "../../data";
+import { useEffect } from "react";
+import { useEndPage } from "../../hooks/useEndPage";
+import ButtonsContainer from "../organisms/ButtonsContainer";
+import FinalScore from "../molecules/FinalScore";
 
 const EndPage = () => {
-  const { score, arrOfQuestions } = useAppSelector((state) => state.quiz);
-  const { userRecord } = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
-  const [gameSaved, setGameSaved] = useState(false);
+  const {
+    score,
+    gameSaved,
+    handleRestart,
+    handleSaveGame,
+    maxScore,
+    userRecord,
+  } = useEndPage();
+
+  // Ritorna alla main page se il quiz
+  // non è finito
   const { appState, navigate } = useMainNav();
-
-  const maxScore = arrOfQuestions.length * POINT_PER_QUESTION;
-
   useEffect(
     function () {
       if (appState !== "end") navigate("/");
@@ -25,30 +26,17 @@ const EndPage = () => {
     [appState, navigate]
   );
 
-  function restart() {
-    dispatch(initialSettings());
-  }
-
-  function handleSaveGame() {
-    dispatch(saveGame(score));
-    setGameSaved(true);
-    toast.success("Game Saved");
-  }
-
   return (
     <div className="animate-slide-up space-y-8">
-      <div className="btn py-5 bg-secondary text-center">
-        <Text as="h4" className="text-[1.4rem]">
-          Your score is: {score}/{maxScore}
-        </Text>
-      </div>
-      <div className="w-full flex flex-wrap justify-center gap-2">
-        <Button onClick={restart}>Restart</Button>
+      <FinalScore score={score} maxScore={maxScore} />
+
+      <ButtonsContainer>
+        <Button onClick={handleRestart}>Restart</Button>
         {!gameSaved && score > userRecord && (
           <Button onClick={handleSaveGame}>Save game</Button>
         )}
         <Button onClick={() => navigate("/result")}>Result</Button>
-      </div>
+      </ButtonsContainer>
     </div>
   );
 };
