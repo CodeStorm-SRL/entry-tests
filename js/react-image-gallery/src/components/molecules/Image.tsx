@@ -7,7 +7,7 @@ type ImageProps = {
 
 const Image: FC<ImageProps> = ({ image }: ImageProps) => {
   return (
-    <div className="w-full hover:scale-105 cursor-pointer overflow-hidden md:h-[200px]">
+    <div className="w-full hover:scale-105 cursor-pointer overflow-hidden h-[200px]">
       <img src={image?.urls.regular} alt="#" className="max-h-[100%]]" />
     </div>
   );
