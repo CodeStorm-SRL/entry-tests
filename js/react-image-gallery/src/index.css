@@ -23,6 +23,7 @@
   --dark: #616471;
   --white: #ffffff;
   --bg-color: #e5ebf1;
+  --bg-container: #ffffff;
 }
 
 .darkMode {
@@ -31,5 +32,6 @@
   --danger-color: #d72638;
   --dark: #ffffff;
   --white: #151515;
-  --bg-color: ##151515;
+  --bg-color: #151515;
+  --bg-container: #5e5a57;
 }
