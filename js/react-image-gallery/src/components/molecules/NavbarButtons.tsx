@@ -1,9 +1,11 @@
 import { useAppContext } from "../../context/useAppContext";
 import Button from "../atoms/Button";
+import { FaSun } from "react-icons/fa";
+
 import { MdDarkMode } from "react-icons/md";
 
 const NavbarButtons = () => {
-  const { dispatch } = useAppContext();
+  const { dispatch, darkMode } = useAppContext();
 
   function handleToggleDarkMode() {
     dispatch({ type: "darkMode" });
@@ -12,7 +14,7 @@ const NavbarButtons = () => {
     <ul className="flex gap-3">
       <li>
         <Button onClick={handleToggleDarkMode}>
-          <MdDarkMode />
+          {darkMode ? <FaSun /> : <MdDarkMode />}
         </Button>
       </li>
       <li>
