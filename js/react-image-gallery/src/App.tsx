@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/layout/AppLayout";
 import MainPage from "./components/page/MainPage";
 import AppContextProvider from "./context/appContext";
+import PhotoPage from "./components/page/PhotoPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AppLayout />}>
               <Route path="/" element={<MainPage />} />
+              <Route path="/pic" element={<PhotoPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
