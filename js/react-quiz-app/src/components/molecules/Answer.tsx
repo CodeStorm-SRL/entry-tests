@@ -24,6 +24,10 @@ const Answer: FC<AnswerProps> = ({
   const { arrOfQuestions, index } = useAppSelector((state) => state.quiz);
   const correctAnswer = arrOfQuestions[index].correctAnswer;
 
+  function handleOnClick(): void {
+    onClick(id, children);
+  }
+
   // Se l'id della risposta selezionata corrisponde con l'id della risposta corrente
   // cambio lo stile
   const active = selected === id;
@@ -33,9 +37,9 @@ const Answer: FC<AnswerProps> = ({
   const feedback =
     submittedAnswer === correctAnswer && children === correctAnswer;
 
-  // Se la risposta è stata data ed è corretta: feedback success, altrimenti feedback danger
-  // Se la risposta non è stata data: stile che cambia se l'utente ha selezionato o no una risposta
-  const classNames = submittedAnswer
+  // Se la risposta (sumbittedAnswer) è stata data ed è corretta: feedback success, altrimenti feedback danger
+  // Se la risposta non è stata data: stile che cambia se l'utente ha selezionato (active) o no una risposta
+  const feedbackStyle = submittedAnswer
     ? `${feedback ? "bg-secondary translate-x-3" : ""} ${
         !feedback && active ? "bg-danger translate-x-2 border-primary" : ""
       }`
@@ -45,11 +49,10 @@ const Answer: FC<AnswerProps> = ({
           : "opacity-90 hover:bg-secondary hover:translate-x-2 hover:opacity-100"
       }`;
 
+  const classNames = `${feedbackStyle} p-x3 py-5 cursor-pointer btn custom-animate-bounce`;
+
   return (
-    <div
-      className={`${classNames} p-x3 py-5 cursor-pointer btn custom-animate-bounce`}
-      onClick={() => onClick(id, children)}
-    >
+    <div className={`${classNames} `} onClick={handleOnClick}>
       <Text>{children}</Text>
     </div>
   );
