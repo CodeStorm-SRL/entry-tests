@@ -10,7 +10,7 @@ const PhotoPage: FC = () => {
 
   //   return null;
 
-  if (!id) return <Navigate to="/" />;
+  if (!images) return <Navigate to="/" />;
   if (isLoading) return "loading";
   if (error) return "error";
 
