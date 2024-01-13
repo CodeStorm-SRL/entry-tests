@@ -29,7 +29,7 @@ function useGameLogic() {
   }
 
   // Do la risposta
-  function handleSubmitAnswer() {
+  function handleSubmitAnswer(): void {
     setSubmittedAnswer(currentAnswer);
     dispatch(submitAnswer(currentAnswer));
 
@@ -41,7 +41,7 @@ function useGameLogic() {
   }
 
   // Domanda successiva
-  function handleNextQuestion() {
+  function handleNextQuestion(): void {
     dispatch(nextQuestion());
     setCurrentAnswer("");
     setSelected(null);

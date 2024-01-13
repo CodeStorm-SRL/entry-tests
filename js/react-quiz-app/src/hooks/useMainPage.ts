@@ -11,7 +11,7 @@ export function useMainPage() {
 
   const numOfQuestions = arrOfQuestions.length;
 
-  function handleStartQuiz() {
+  function handleStartQuiz(): void {
     dispatch(startQuiz());
     navigate("/quiz");
   }
