@@ -22,11 +22,11 @@ export function useEndPage(): UseEndPage {
 
   const maxScore = arrOfQuestions.length * POINT_PER_QUESTION;
 
-  function handleRestart() {
+  function handleRestart(): void {
     dispatch(initialSettings());
   }
 
-  function handleSaveGame() {
+  function handleSaveGame(): void {
     dispatch(saveGame(score));
     setGameSaved(true);
     toast.success("Game Saved");
