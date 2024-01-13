@@ -17,6 +17,11 @@
   transition: color 0.3s, background-color 0.3s, transform 0.3s, opacity 0.3s;
 }
 
+body {
+  background-image: url("/assets/rm218-bb-07.jpg");
+  background-size: cover;
+}
+
 @keyframes slideUp {
   0% {
     transform: translateY(1rem);
