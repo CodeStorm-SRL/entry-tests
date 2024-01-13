@@ -12,13 +12,15 @@ const Navbar: FC = () => {
     if (notInMainPage) navigate("/");
   }
 
+  const styleIfNotInMainPage = notInMainPage
+    ? "cursor-pointer inline-block hover:translate-y-1"
+    : "";
+
   return (
     <nav className="px-3 py-5 text-center ">
       <Text
         as="h1"
-        className={
-          notInMainPage ? "cursor-pointer inline-block hover:translate-y-1" : ""
-        }
+        className={styleIfNotInMainPage}
         color="danger"
         onClick={backToMainPage}
       >
