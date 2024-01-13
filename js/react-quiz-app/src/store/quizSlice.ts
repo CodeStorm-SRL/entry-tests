@@ -10,6 +10,7 @@ type appState = "start" | "active" | "end";
 // index indica la domanda corrente
 interface QuizState {
   appState: appState;
+  topic: string;
   arrOfQuestions: QuestionType[];
   score: number;
   index: number;
@@ -18,6 +19,7 @@ interface QuizState {
 
 const initialState: QuizState = {
   appState: "start",
+  topic: "movie",
   arrOfQuestions: [],
   score: 0,
   index: 0,

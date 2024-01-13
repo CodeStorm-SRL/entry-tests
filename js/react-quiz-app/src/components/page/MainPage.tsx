@@ -2,7 +2,7 @@ import Text from "../atoms/Text";
 import { initialSettings, startQuiz } from "../../store/quizSlice";
 
 import { FC, useEffect } from "react";
-import { useAppDispatch } from "../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { useNavigate } from "react-router-dom";
 import Button from "../atoms/Button";
 import { arrOfQuestions } from "../../data";
@@ -10,6 +10,7 @@ import { arrOfQuestions } from "../../data";
 const numOfQuestions = arrOfQuestions.length;
 
 const MainPage: FC = () => {
+  const {topic} = useAppSelector(state => state.quiz)
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -32,7 +33,9 @@ const MainPage: FC = () => {
     <div className="flex flex-col items-center space-y-8  animate-slide-up">
       <div className="space-y-3 text-center">
         <Text as="h2">Welcome to the Quiz</Text>
-        <Text as="h4">{numOfQuestions} questions to test your Mastery</Text>
+        <Text as="h4">
+          {numOfQuestions} questions to test your {topic} mastery
+        </Text>
       </div>
 
       <Button variant="primary" onClick={handleStartQuiz}>
