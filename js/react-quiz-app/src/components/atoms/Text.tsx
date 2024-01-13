@@ -10,6 +10,7 @@ type TextProps = PropsWithChildren<{
   styledAs?: TextTags;
   isBold?: boolean;
   isDark?: boolean;
+  isDanger?: boolean;
 }> &
   ComponentProps<TextTags>;
 
@@ -18,6 +19,7 @@ const Text: FC<TextProps> = ({
   styledAs = as,
   isDark,
   isBold,
+  isDanger,
   children,
   ...attributes
 }: TextProps) => {
@@ -37,9 +39,15 @@ const Text: FC<TextProps> = ({
 
   const { className: customClassName } = attributes;
 
-  const classNames = `${styles[styledAs]} ${
-    isDark ? "text-dark" : "text-light"
-  } ${isBold ? "font-bold" : ""} ${customClassName ? customClassName : ""}`;
+  const textColor = isDark
+    ? "text-dark"
+    : isDanger
+    ? "text-danger"
+    : "text-light";
+
+  const classNames = `${styles[styledAs]} ${textColor} ${
+    isBold ? "font-bold" : ""
+  } ${customClassName ? customClassName : ""}`;
 
   return (
     <El {...attributes} className={classNames}>
