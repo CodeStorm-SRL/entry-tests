@@ -1,16 +1,18 @@
 import { FC } from "react";
-import Text from "../atoms/Text";
+import TextBlock from "../molecules/TextBlock";
 
 const NotFoundPage: FC = () => {
   return (
     <div className="max-w-[1024px] m-auto text-center space-y-2">
-      <Text as="h1" styledAs="h2">
-        404
-      </Text>
-      <Text as="h2" styledAs="h4">
+      <TextBlock
+        headingAs="h1"
+        headingStyledAs="h2"
+        paragraphAs="h2"
+        paragraphStyledAs="h4"
+        headingText="404"
+      >
         Page not found 😢
-      </Text>
-      ;
+      </TextBlock>
     </div>
   );
 };
