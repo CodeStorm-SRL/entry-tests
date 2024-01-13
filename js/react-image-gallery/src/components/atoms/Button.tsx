@@ -6,7 +6,7 @@ type ButtonVariant = "primary" | "secondary" | "disabled";
 // Seleziono uno stile in base alla variante, selezionando
 // la proprietà di styles attraverso bracket notation (styles[variant])
 const styles: Record<ButtonVariant, string> = {
-  primary: "bg-primary border-primary hover:bg-dark",
+  primary: "bg-primary border-primary",
   secondary: "bg-secondary border-secondary",
   disabled: "opacity-50 cursor-not-allowed",
 };
@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = ({
   // di stile
   const { disabled, className: customClassName } = attributes;
 
-  const classNames = `text-lg text-white min-w-[150px] py-3 px-5 border-2 rounded-full ${
+  const classNames = `text-lg text-white min-h-[56px] py-3 px-5 border-2 rounded-full opacity-80 hover:opacity-100 ${
     styles[variant]
   } ${disabled ? styles.disabled : ""} ${
     customClassName ? customClassName : ""
