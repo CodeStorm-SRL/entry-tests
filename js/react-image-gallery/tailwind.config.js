@@ -27,6 +27,7 @@ export default {
         dark: "var(--dark)",
         white: "var(--white)",
         "bg-color": "var(--bg-color)",
+        "bg-container": "var(--bg-container)",
       },
     },
   },

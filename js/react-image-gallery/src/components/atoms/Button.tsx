@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = ({
   // di stile
   const { disabled, className: customClassName } = attributes;
 
-  const classNames = `text-lg text-white min-h-[56px] py-3 px-5 border-2 rounded-full opacity-80 hover:opacity-100 ${
+  const classNames = `text-lg text-white min-h-[56px] py-3 px-5 border-2 rounded-full opacity-80 hover:opacity-100 hover:-translate-y-1 ${
     styles[variant]
   } ${disabled ? styles.disabled : ""} ${
     customClassName ? customClassName : ""
