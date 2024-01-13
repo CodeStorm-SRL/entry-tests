@@ -1,17 +1,10 @@
 import { FC } from "react";
 import Image from "../molecules/Image";
-import { useQuery } from "@tanstack/react-query";
-import { ImageObjectInterface, getImages } from "../../services/apiImages";
+import { ImageObjectInterface } from "../../services/apiImages";
+import { useAppContext } from "../../context/useAppContext";
 
 const PhotoSection: FC = () => {
-  const {
-    data: images,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["images"],
-    queryFn: getImages,
-  });
+  const { error, images, isLoading } = useAppContext();
 
   if (isLoading) return null;
   if (error) return null;
@@ -19,7 +12,7 @@ const PhotoSection: FC = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
       {images.map((image: ImageObjectInterface) => (
-        <Image image={image} />
+        <Image image={image} key={image.id} />
       ))}
     </section>
   );
