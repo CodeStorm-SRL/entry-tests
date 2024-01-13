@@ -8,10 +8,19 @@
   .btn {
     @apply text-lg text-light min-w-[170px] py-3 px-5 border-2 rounded-full;
   }
+  .spinnerContainer {
+    @apply absolute inset-0 flex items-center justify-center;
+  }
 }
 
 * {
   transition: color 0.3s, background-color 0.3s, transform 0.3s, opacity 0.3s;
+}
+
+body {
+  background-image: url("/assets/rm218-bb-07.jpg");
+  background-size: cover;
+  min-height: 100vh;
 }
 
 @keyframes slideUp {

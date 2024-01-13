@@ -13,7 +13,7 @@ export default {
         dark: "#343a40",
         medium: "#ced4da",
         light: "#f1f3f5",
-        danger: "#ffa94d",
+        danger: "#ff7d4d",
       },
       fontSize: {
         h1: "5.6rem",
@@ -22,6 +22,9 @@ export default {
         h2r: "2.8rem",
         h4: "2.2rem",
         h4r: "1.6rem",
+        h5: "1.3rem",
+        h5r: "1.2rem",
+        h6: "1.1rem",
       },
     },
   },

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppSelector } from "../../hooks/reduxHooks";
-import Question from "../organisms/Question";
+import Question from "../organisms/Question/Question";
 import { useNavigate } from "react-router-dom";
 
 const QuizPage = () => {

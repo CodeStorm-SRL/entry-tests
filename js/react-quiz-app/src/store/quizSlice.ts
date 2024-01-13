@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { QuestionType, arrOfQuestions } from "../data";
+import { POINT_PER_QUESTION, QuestionType, arrOfQuestions } from "../data";
 
 // stato dell'app:
 // start indica che il gioco è pronto a partire
@@ -10,16 +10,20 @@ type appState = "start" | "active" | "end";
 // index indica la domanda corrente
 interface QuizState {
   appState: appState;
+  topic: string;
   arrOfQuestions: QuestionType[];
   score: number;
   index: number;
+  userAnswers: string[];
 }
 
 const initialState: QuizState = {
   appState: "start",
+  topic: "movie",
   arrOfQuestions: [],
   score: 0,
   index: 0,
+  userAnswers: [],
 };
 
 export const quizSlice = createSlice({
@@ -39,8 +43,9 @@ export const quizSlice = createSlice({
       // risposta effettuata, se corretta
       // lo score aumenta
       if (state.arrOfQuestions[state.index].correctAnswer === payload) {
-        state.score += 10;
+        state.score += POINT_PER_QUESTION;
       }
+      state.userAnswers.push(payload);
     },
     nextQuestion: (state) => {
       // passo alla prossima domanda

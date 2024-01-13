@@ -1,19 +1,24 @@
 import Button from "../atoms/Button";
-import Text from "../atoms/Text";
 
 import useMainNav from "../../hooks/useMainNav";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { saveGame } from "../../store/userSlice";
-import { initialSettings } from "../../store/quizSlice";
+import { useEffect } from "react";
+import { useEndPage } from "../../hooks/useEndPage";
+import ButtonsContainer from "../organisms/ButtonsContainer";
+import FinalScore from "../molecules/FinalScore";
 
 const EndPage = () => {
-  const { score } = useAppSelector((state) => state.quiz);
-  const { userRecord } = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
-  const [gameSaved, setGameSaved] = useState(false);
-  const { appState, navigate } = useMainNav();
+  const {
+    score,
+    gameSaved,
+    handleRestart,
+    handleSaveGame,
+    maxScore,
+    userRecord,
+  } = useEndPage();
 
+  // Ritorna alla main page se il quiz
+  // non è finito
+  const { appState, navigate } = useMainNav();
   useEffect(
     function () {
       if (appState !== "end") navigate("/");
@@ -21,24 +26,17 @@ const EndPage = () => {
     [appState, navigate]
   );
 
-  function restart() {
-    dispatch(initialSettings());
-  }
-
-  function handleSaveGame() {
-    dispatch(saveGame(score));
-    setGameSaved(true);
-  }
-
   return (
-    <div className="animate-slide-up">
-      <Text>END PAGE</Text>
-      <Text>Your score is: {score}</Text>
-      <Button onClick={restart}>Restart</Button>
-      {gameSaved && <Text>Game saved!</Text>}
-      {!gameSaved && score > userRecord && (
-        <Button onClick={handleSaveGame}>Save game</Button>
-      )}
+    <div className="animate-slide-up space-y-8">
+      <FinalScore score={score} maxScore={maxScore} />
+
+      <ButtonsContainer>
+        <Button onClick={handleRestart}>Restart</Button>
+        {!gameSaved && score > userRecord && (
+          <Button onClick={handleSaveGame}>Save game</Button>
+        )}
+        <Button onClick={() => navigate("/result")}>Result</Button>
+      </ButtonsContainer>
     </div>
   );
 };
