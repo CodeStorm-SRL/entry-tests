@@ -1,11 +1,12 @@
 import { FC } from "react";
 import PhotoSection from "../organisms/PhotoSection";
+import Section from "../atoms/Section";
 
 const MainPage: FC = () => {
   return (
-    <main className="flex-grow p-6 mx-auto w-full max-w-[1024px] bg-bg-container rounded-3xl">
+    <Section as="main">
       <PhotoSection />
-    </main>
+    </Section>
   );
 };
 

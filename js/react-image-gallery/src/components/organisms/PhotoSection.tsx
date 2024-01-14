@@ -1,7 +1,10 @@
 import { FC } from "react";
-import Image from "../molecules/AsyncImage";
+import AsyncImage from "../molecules/AsyncImage";
 import { ImageObjectInterface } from "../../services/apiImages";
 import { useAppContext } from "../../context/useAppContext";
+import Section from "../atoms/Section";
+
+const classNames = "grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-6";
 
 const PhotoSection: FC = () => {
   const { error, images, isLoading } = useAppContext();
@@ -10,11 +13,11 @@ const PhotoSection: FC = () => {
   if (error) return null;
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-6">
-      {images.map((image: ImageObjectInterface) => (
-        <Image image={image} key={image.id} />
+    <Section className={classNames}>
+      {images.map((image: ImageObjectInterface, index) => (
+        <AsyncImage image={image} key={image.id} index={index} />
       ))}
-    </section>
+    </Section>
   );
 };
 
