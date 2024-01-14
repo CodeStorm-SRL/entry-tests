@@ -6,6 +6,8 @@ import { useImage } from "../../hooks/useImage";
 import { Image } from "../atoms/Image";
 import { ImgNavigationButton } from "../molecules/ImgNavigationButton";
 import PhotoDetails from "../organisms/PhotoDetails/PhotoDetails";
+import Loader from "../molecules/Loader";
+import ErrorComponent from "../molecules/ErrorComponent";
 
 const PhotoPage: FC = () => {
   const [params, setParams] = useSearchParams();
@@ -31,8 +33,8 @@ const PhotoPage: FC = () => {
   );
 
   if (!images || !id) return <Navigate to="/" />;
-  if (isLoading) return "loading";
-  if (error) return "error";
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorComponent />;
 
   const image = images[indexImg];
 

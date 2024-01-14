@@ -3,14 +3,16 @@ import AsyncImage from "../molecules/AsyncImage";
 import { ImageObjectInterface } from "../../services/apiImages";
 import { useAppContext } from "../../context/useAppContext";
 import Section from "../atoms/Section";
+import Loader from "../molecules/Loader";
+import ErrorComponent from "../molecules/ErrorComponent";
 
 const classNames = "grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-6";
 
 const PhotoSection: FC = () => {
   const { error, images, isLoading } = useAppContext();
 
-  if (isLoading) return null;
-  if (error) return null;
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorComponent />;
 
   return (
     <Section className={classNames}>
