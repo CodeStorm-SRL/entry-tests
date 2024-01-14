@@ -17,7 +17,7 @@ interface InitialStateInterface {
 }
 
 const initialState: InitialStateInterface = {
-  darkMode: false,
+  darkMode: window.matchMedia("(prefers-color-scheme: dark").matches,
 };
 
 export const AppContext = createContext<ValueInterface>({
