@@ -20,7 +20,11 @@ const NavbarButtons = () => {
         </Button>
       </li>
       <li>
-        <Button onClick={handleNavigate} disabled={isUserInPhotoPage}>
+        <Button
+          variant={isUserInPhotoPage ? "disabled" : "primary"}
+          onClick={handleNavigate}
+          disabled={isUserInPhotoPage}
+        >
           Back
         </Button>
       </li>
