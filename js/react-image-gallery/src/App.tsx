@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/layout/AppLayout";
 import MainPage from "./components/page/MainPage";
 import AppContextProvider from "./context/appContext";
@@ -23,7 +23,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<AppLayout />}>
-              <Route path="/" element={<MainPage />} />
+              <Route path="/" element={<Navigate to="/photo" />} />
+              <Route path="/photo" element={<MainPage />} />
               <Route path="/pic" element={<PhotoPage />} />
             </Route>
           </Routes>

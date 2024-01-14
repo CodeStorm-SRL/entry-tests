@@ -29,12 +29,11 @@ export interface ImageObjectInterface {
 export async function getImages() {
   try {
     const res = await fetch(
-      "https://api.unsplash.com/photos/?client_id=MW4zPeUx24HV-sVfEgTec13QPzwwBPGkNMGgb0lvnbg"
+      "https://api.unsplash.com/photos/?per_page=16&client_id=MW4zPeUx24HV-sVfEgTec13QPzwwBPGkNMGgb0lvnbg"
     );
 
     if (res.ok) {
       const data = await res.json();
-      // console.log(data);
       return data;
     }
   } catch {
