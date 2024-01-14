@@ -1,11 +1,16 @@
 import { FC, PropsWithChildren } from "react";
 import Text from "../atoms/Text";
-import { useNavigate } from "react-router";
+import { useBackToMainPage } from "../../hooks/useBackToMainPage";
 
 const Title: FC<PropsWithChildren> = ({ children }) => {
-  const navigate = useNavigate();
+  const { handleNavigate, isUserInPhotoPage } = useBackToMainPage();
+
+  const classNames = isUserInPhotoPage
+    ? ""
+    : "hover:text-primary hover:-translate-y-1 cursor-pointer";
+
   return (
-    <Text as="h1" color="dark" onClick={() => navigate("/")}>
+    <Text as="h1" color="dark" onClick={handleNavigate} className={classNames}>
       {children}
     </Text>
   );

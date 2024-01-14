@@ -12,7 +12,7 @@ const styles: Record<TextTags, string> = {
   h4: "text-h4r md-text-h4 leading-[1.1]",
   h5: "text-h5r text-h5 leading-[1.1]",
   h6: "text-h6",
-  p: "text-md",
+  p: "text-lg leading-[1.6]",
 };
 
 // Stile in base al colore
