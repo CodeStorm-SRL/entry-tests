@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Image from "../molecules/Image";
+import Image from "../molecules/AsyncImage";
 import { ImageObjectInterface } from "../../services/apiImages";
 import { useAppContext } from "../../context/useAppContext";
 
