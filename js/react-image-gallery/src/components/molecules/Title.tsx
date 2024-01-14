@@ -10,7 +10,13 @@ const Title: FC<PropsWithChildren> = ({ children }) => {
     : "hover:text-primary hover:-translate-y-1 cursor-pointer";
 
   return (
-    <Text as="h1" color="dark" onClick={handleNavigate} className={classNames}>
+    <Text
+      as="h1"
+      styledAs="h4"
+      color="dark"
+      onClick={handleNavigate}
+      className={classNames}
+    >
       {children}
     </Text>
   );

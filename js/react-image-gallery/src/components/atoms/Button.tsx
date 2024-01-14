@@ -29,7 +29,7 @@ const Button: FC<ButtonProps> = ({
   // di stile
   const { disabled, className: customClassName } = attributes;
 
-  const classNames = `text-lg text-white min-h-[56px] py-3 px-5 border-2 rounded-full ${
+  const classNames = `text-lg text-white min-h-[45px] py-2 px-4 md:min-h-[48px] md:px-5 border-2 rounded-full ${
     styles[variant]
   } ${disabled ? styles.disabled : ""} ${
     customClassName ? customClassName : ""
