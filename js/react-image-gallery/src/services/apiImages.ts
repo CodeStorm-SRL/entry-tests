@@ -7,7 +7,7 @@ interface Urls {
   thumb: string;
 }
 
-interface Artist {
+export interface Artist {
   bio: string;
   name: string;
   id: string;

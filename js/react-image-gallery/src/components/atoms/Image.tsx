@@ -8,11 +8,15 @@ import { Fade } from "transitions-kit";
 // In base a inView si setta lo stato a loading o
 // error.
 type ImageProps = {
-  inView: boolean;
-  smallSrc: string;
+  inView?: boolean;
+  smallSrc?: string;
 } & ComponentProps<"img">;
 
-export const Image: FC<ImageProps> = ({ inView, smallSrc, ...imageProps }) => {
+export const Image: FC<ImageProps> = ({
+  inView = true,
+  smallSrc = "",
+  ...imageProps
+}) => {
   const [status, setStatus] = useState("loading");
 
   return (
