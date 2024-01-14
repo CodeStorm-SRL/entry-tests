@@ -1,4 +1,5 @@
 import { ComponentProps, FC, useState } from "react";
+import { Fade } from "transitions-kit";
 
 // Componente che riceve dal padre AsyncImage
 // inView. È una props di intersection-observer-API
@@ -8,22 +9,31 @@ import { ComponentProps, FC, useState } from "react";
 // error.
 type ImageProps = {
   inView: boolean;
+  smallSrc: string;
 } & ComponentProps<"img">;
 
-export const Image: FC<ImageProps> = ({ inView, ...imageProps }) => {
+export const Image: FC<ImageProps> = ({ inView, smallSrc, ...imageProps }) => {
   const [status, setStatus] = useState("loading");
 
   return (
     <>
-      {status === "loading" && <div>loading...</div>}
+      <Fade appear={false} in={status === "loading"} unmountOnExit>
+        {/* <div>loading...</div> */}
+        <img src={smallSrc} alt="" className="blur-lg" />
+      </Fade>
+
       {inView && (
-        <img
-          {...imageProps}
-          onLoad={() => setStatus("loaded")}
-          onError={() => setStatus("failed")}
-        />
+        <Fade in={status === "loaded"}>
+          <img
+            {...imageProps}
+            onLoad={() => setStatus("loaded")}
+            onError={() => setStatus("failed")}
+          />
+        </Fade>
       )}
-      {status === "failed" && <div>error</div>}
+      <Fade in={status === "failed"} mountOnEnter unmountOnExit>
+        <div>error</div>
+      </Fade>
     </>
   );
 };
