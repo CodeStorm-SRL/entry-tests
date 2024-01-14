@@ -6,8 +6,7 @@ type ImageProps = {
   image: ImageObjectInterface;
 };
 
-const classNames =
-  "w-full hover:scale-105 cursor-pointer overflow-hidden h-[200px]";
+const classNames = "w-full hover:scale-105 cursor-pointer overflow-hidden ";
 
 const Image: FC<ImageProps> = ({ image }: ImageProps) => {
   const navigate = useNavigate();
@@ -18,7 +17,11 @@ const Image: FC<ImageProps> = ({ image }: ImageProps) => {
 
   return (
     <div className={classNames} onClick={openSingleImage}>
-      <img src={image?.urls.regular} alt="#" className="max-h-[100%]]" />
+      <img
+        src={image?.urls.regular}
+        alt="#"
+        className="max-h-[100%]] aspect-square"
+      />
     </div>
   );
 };

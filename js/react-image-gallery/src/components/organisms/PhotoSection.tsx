@@ -10,7 +10,7 @@ const PhotoSection: FC = () => {
   if (error) return null;
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <section className="grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-6">
       {images.map((image: ImageObjectInterface) => (
         <Image image={image} key={image.id} />
       ))}
