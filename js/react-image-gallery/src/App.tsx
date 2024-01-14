@@ -5,12 +5,18 @@ import { Suspense, lazy } from "react";
 
 import AppContextProvider from "./context/appContext";
 
-// import AppLayout from "./components/layout/AppLayout";
+// Riduco la bundle size, permettendo un caricamento
+// dell'app più veloce.
+// Il JS dei componenti verrà scaricato all'occorrenza
 import Loader from "./components/molecules/Loader";
 const AppLayout = lazy(() => import("./components/layout/AppLayout"));
 const MainPage = lazy(() => import("./components/page/MainPage"));
 const PhotoPage = lazy(() => import("./components/page/PhotoPage"));
 
+// QueryClient di TanStack Query
+// Le query diventano stale dopo un'ora
+// (Per evitare troppe chiamate alla API
+// (unsplash ne da max 50 l'ora))
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -22,6 +28,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      {/* Devtools TanStack Query */}
       <ReactQueryDevtools initialIsOpen={false} />
 
       <AppContextProvider>

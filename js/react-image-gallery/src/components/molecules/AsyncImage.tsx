@@ -1,8 +1,9 @@
 import { FC } from "react";
+import { InView } from "react-intersection-observer";
+import Image from "../atoms/Image";
+
 import { ImageObjectInterface } from "../../services/apiImages";
 import { useNavigate } from "react-router";
-import { InView } from "react-intersection-observer";
-import { Image } from "../atoms/Image";
 
 type AsyncImageProps = {
   image: ImageObjectInterface;
@@ -11,6 +12,12 @@ type AsyncImageProps = {
 
 const classNames = "w-full hover:scale-105 cursor-pointer";
 
+// Renderizza un'immagine piccola e con blur
+// finchè il componente non appare sullo
+// schermo
+// Il componente InView di react-intersection-observer
+// ci fornisce true o false, a seconda se il componente
+// è visualizzato oppure no
 const AsyncImage: FC<AsyncImageProps> = ({ image, index }: AsyncImageProps) => {
   const navigate = useNavigate();
 

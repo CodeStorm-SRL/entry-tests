@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useAppContext } from "../context/useAppContext";
 
+// Ritorna il dal context, l'index salvato come
+// stato, isOpen e la funzione per il toggle
+// e le funzioni per
+// passare all'immagine prev/next
 export const useImage = (id: number) => {
   const { images, isLoading, error } = useAppContext();
   const [indexImg, setIndexImg] = useState<number>(id);
@@ -23,6 +27,7 @@ export const useImage = (id: number) => {
     setIndexImg((n) => n - 1);
   }
 
+  // toggle isOpen
   function handleOpen(): void {
     setIsOpen((isOpen) => !isOpen);
   }

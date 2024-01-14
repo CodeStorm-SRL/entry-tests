@@ -12,7 +12,7 @@ type ImageProps = {
   smallSrc?: string;
 } & ComponentProps<"img">;
 
-export const Image: FC<ImageProps> = ({
+const Image: FC<ImageProps> = ({
   inView = true,
   smallSrc = "",
   ...imageProps
@@ -41,3 +41,5 @@ export const Image: FC<ImageProps> = ({
     </>
   );
 };
+
+export default Image;
