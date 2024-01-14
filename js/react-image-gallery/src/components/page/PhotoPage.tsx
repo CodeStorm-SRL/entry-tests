@@ -5,7 +5,7 @@ import Section from "../atoms/Section";
 import { useImage } from "../../hooks/useImage";
 import { Image } from "../atoms/Image";
 import { ImgNavigationButton } from "../molecules/ImgNavigationButton";
-import PhotoDetails from "../organisms/PhotoDetails";
+import PhotoDetails from "../organisms/PhotoDetails/PhotoDetails";
 
 const PhotoPage: FC = () => {
   const [params, setParams] = useSearchParams();
@@ -41,7 +41,7 @@ const PhotoPage: FC = () => {
       {isOpen ? (
         <Image
           src={image?.urls.regular}
-          className="max-h-[400px] sm:max-h-[600px] 2xl:max-h-[800px]"
+          className="max-h-[400px] sm:max-h-[600px] 2xl:max-h-[800px] cursor-pointer"
           onClick={handleOpen}
         />
       ) : (
@@ -49,11 +49,12 @@ const PhotoPage: FC = () => {
           description={image.description}
           user={image.user}
           createdAt={image.created_at}
+          onClose={handleOpen}
         />
       )}
 
-      <ImgNavigationButton direction="right" onClick={nextImg} />
-      <ImgNavigationButton direction="left" onClick={prevImg} />
+      {isOpen && <ImgNavigationButton direction="right" onClick={nextImg} />}
+      {isOpen && <ImgNavigationButton direction="left" onClick={prevImg} />}
     </Section>
   );
 };
