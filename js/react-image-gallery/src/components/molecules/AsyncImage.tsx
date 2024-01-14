@@ -6,15 +6,16 @@ import { Image } from "../atoms/Image";
 
 type AsyncImageProps = {
   image: ImageObjectInterface;
+  index: number;
 };
 
 const classNames = "w-full hover:scale-105 cursor-pointer";
 
-const AsyncImage: FC<AsyncImageProps> = ({ image }: AsyncImageProps) => {
+const AsyncImage: FC<AsyncImageProps> = ({ image, index }: AsyncImageProps) => {
   const navigate = useNavigate();
 
   function openSingleImage(): void {
-    navigate(`/pic?id=${image.id}`);
+    navigate(`/pic?id=${index}`);
   }
 
   return (
