@@ -16,10 +16,12 @@ interface InitialStateInterface {
   darkMode: boolean;
 }
 
+// se l'utente ha la darkMode di default la abilita
 const initialState: InitialStateInterface = {
   darkMode: window.matchMedia("(prefers-color-scheme: dark").matches,
 };
 
+// Context dell'applicazione
 export const AppContext = createContext<ValueInterface>({
   darkMode: initialState.darkMode,
   images: [],
@@ -28,6 +30,7 @@ export const AppContext = createContext<ValueInterface>({
   dispatch: () => {},
 });
 
+// Funzione reducer per useReducer
 function reducer(state: InitialStateInterface, action: Action) {
   switch (action.type) {
     case "darkMode":
@@ -38,11 +41,14 @@ function reducer(state: InitialStateInterface, action: Action) {
   }
 }
 
+// Provider
 const AppContextProvider: FC<PropsWithChildren> = ({
   children,
 }: PropsWithChildren) => {
   const [{ darkMode }, dispatch] = useReducer(reducer, initialState);
 
+  // Get di TanStack Query
+  // Ritorna i dati, isLoading e error
   const {
     data: images,
     isLoading,
@@ -52,6 +58,7 @@ const AppContextProvider: FC<PropsWithChildren> = ({
     queryFn: getImages,
   });
 
+  // Value del context
   const value: ValueInterface = {
     darkMode,
     images,

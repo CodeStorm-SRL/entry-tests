@@ -1,27 +1,29 @@
 import { FC, useEffect } from "react";
-import { Navigate } from "react-router";
-import { useSearchParams } from "react-router-dom";
 import Section from "../atoms/Section";
-import { useImage } from "../../hooks/useImage";
-import { Image } from "../atoms/Image";
-import { ImgNavigationButton } from "../molecules/ImgNavigationButton";
 import PhotoDetails from "../organisms/PhotoDetails/PhotoDetails";
 import Loader from "../molecules/Loader";
 import ErrorComponent from "../molecules/ErrorComponent";
+import ImgNavigation from "../organisms/ImgNavigation";
 
+import { useImage } from "../../hooks/useImage";
+import { Navigate } from "react-router";
+import { useSearchParams } from "react-router-dom";
+
+// Con useImage setto l'index come
+// searchParam
 const PhotoPage: FC = () => {
   const [params, setParams] = useSearchParams();
   const id = params.get("id");
   const numericId = id ? +id : null;
   const {
-    error,
-    indexImg,
-    images,
-    isLoading,
-    nextImg,
-    prevImg,
-    isOpen,
-    handleOpen,
+    error, // error di TanStack Query
+    indexImg, // index dell'immagine
+    images, // array di immagini
+    isLoading, // isLoading di TanStack Query
+    nextImg, // fn per passare alla prossima img
+    prevImg, // precedente img
+    isOpen: isDetailsOpen, // i dettagli sono aperti
+    handleOpen, // apre/chiude i dettagli
   } = useImage(numericId as number);
 
   useEffect(
@@ -36,17 +38,21 @@ const PhotoPage: FC = () => {
   if (isLoading) return <Loader />;
   if (error) return <ErrorComponent />;
 
+  // Immagine attuale
   const image = images[indexImg];
 
   return (
     <Section as="main" className="relative flex items-center justify-center">
-      {isOpen ? (
-        <Image
+      {isDetailsOpen ? (
+        // immagine
+        <ImgNavigation
           src={image?.urls.regular}
-          className="max-h-[400px] sm:max-h-[600px] 2xl:max-h-[800px] cursor-pointer"
-          onClick={handleOpen}
+          handleOpen={handleOpen}
+          nextImg={nextImg}
+          prevImg={prevImg}
         />
       ) : (
+        // dettagli
         <PhotoDetails
           description={image.description}
           user={image.user}
@@ -54,9 +60,6 @@ const PhotoPage: FC = () => {
           onClose={handleOpen}
         />
       )}
-
-      {isOpen && <ImgNavigationButton direction="right" onClick={nextImg} />}
-      {isOpen && <ImgNavigationButton direction="left" onClick={prevImg} />}
     </Section>
   );
 };

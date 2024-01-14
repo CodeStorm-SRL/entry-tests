@@ -8,7 +8,10 @@ type ImgNavigationButtonProps = {
   direction: directions;
   onClick(): void;
 };
-export const ImgNavigationButton: FC<ImgNavigationButtonProps> = ({
+
+// Bottoni che permettono di passare all'immagine
+// precedente o successiva.
+const ImgNavigationButton: FC<ImgNavigationButtonProps> = ({
   direction,
   onClick,
 }: ImgNavigationButtonProps) => {
@@ -31,3 +34,5 @@ export const ImgNavigationButton: FC<ImgNavigationButtonProps> = ({
     </div>
   );
 };
+
+export default ImgNavigationButton;

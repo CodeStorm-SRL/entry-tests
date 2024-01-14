@@ -26,10 +26,13 @@ export interface ImageObjectInterface {
   user: Artist;
 }
 
+const UNSPLASH_API_KEY = "MW4zPeUx24HV-sVfEgTec13QPzwwBPGkNMGgb0lvnbg";
+
+// Ottiene le immagini dalla API di unplash
 export async function getImages() {
   try {
     const res = await fetch(
-      "https://api.unsplash.com/photos/?per_page=16&client_id=MW4zPeUx24HV-sVfEgTec13QPzwwBPGkNMGgb0lvnbg"
+      `https://api.unsplash.com/photos/?per_page=16&client_id=${UNSPLASH_API_KEY}`
     );
 
     if (res.ok) {
@@ -37,6 +40,6 @@ export async function getImages() {
       return data;
     }
   } catch {
-    throw new Error("Error");
+    throw new Error("Api Error");
   }
 }

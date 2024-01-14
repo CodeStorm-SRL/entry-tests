@@ -9,14 +9,12 @@ const DescriptionFields: FC<DescriptionFieldsProps> = ({
   field,
   children,
 }: DescriptionFieldsProps) => {
+  if (!children) return null;
+
   return (
-    <>
-      {!!children && (
-        <Text>
-          <b>{field}</b>: <i>{children}</i>
-        </Text>
-      )}
-    </>
+    <Text>
+      <b>{field}</b>: <i>{children}</i>
+    </Text>
   );
 };
 

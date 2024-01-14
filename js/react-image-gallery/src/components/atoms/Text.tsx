@@ -1,7 +1,6 @@
 import { ComponentProps, FC, PropsWithChildren } from "react";
 
-// Tipi di tag ammessi: potranno essere espansi se serve (servono anche nel componente TextBlock)
-export type TextTags = "h1" | "h2" | "h4" | "h5" | "h6" | "p";
+type TextTags = "h1" | "h2" | "h4" | "h5" | "h6" | "p";
 
 type TextColor = "white" | "secondary" | "dark" | "danger";
 

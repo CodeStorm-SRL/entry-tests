@@ -1,8 +1,8 @@
-import { useAppContext } from "../../context/useAppContext";
-import { useBackToMainPage } from "../../hooks/useBackToMainPage";
 import Button from "../atoms/Button";
 import { FaSun } from "react-icons/fa";
 
+import { useAppContext } from "../../context/useAppContext";
+import { useBackToMainPage } from "../../hooks/useBackToMainPage";
 import { MdDarkMode } from "react-icons/md";
 
 const NavbarButtons = () => {
