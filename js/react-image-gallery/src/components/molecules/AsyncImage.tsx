@@ -26,6 +26,7 @@ const AsyncImage: FC<AsyncImageProps> = ({ image }: AsyncImageProps) => {
             alt="#"
             className="max-h-[100%]] aspect-square"
             inView={inView}
+            smallSrc={image?.urls.small}
           />
         </div>
       )}
