@@ -13,7 +13,7 @@ const NavbarButtons = () => {
     dispatch({ type: "darkMode" });
   }
   return (
-    <ul className="flex gap-3">
+    <ul className="flex gap-1 md:gap-3">
       <li>
         <Button onClick={handleToggleDarkMode}>
           {darkMode ? <FaSun /> : <MdDarkMode />}

@@ -7,10 +7,10 @@ type TextColor = "white" | "secondary" | "dark" | "danger";
 
 // Stile in base alla variante e al tag
 const styles: Record<TextTags, string> = {
-  h1: "text-h1r md-text-h1 leading-[1.2]",
-  h2: "text-h2r md-text-h2 leading-[1.1]",
-  h4: "text-h4r md-text-h4 leading-[1.1]",
-  h5: "text-h5r text-h5 leading-[1.1]",
+  h1: "text-h1r md:text-h1 leading-[1.2]",
+  h2: "text-h2r md:text-h2 leading-[1.1]",
+  h4: "text-h4r md:text-h4 leading-[1.1]",
+  h5: "text-h5r md:text-h5 leading-[1.1]",
   h6: "text-h6",
   p: "text-lg leading-[1.6]",
 };

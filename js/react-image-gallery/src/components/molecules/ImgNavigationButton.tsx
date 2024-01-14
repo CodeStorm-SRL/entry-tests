@@ -23,9 +23,9 @@ export const ImgNavigationButton: FC<ImgNavigationButtonProps> = ({
     <div className={classNames} onClick={onClick}>
       <div className="border rounded-full bg-bg-color">
         {direction === "left" ? (
-          <MdOutlineKeyboardArrowLeft className="text-[2.5rem] text-dark" />
+          <MdOutlineKeyboardArrowLeft className="text-[1.8rem] md:text-[2.5rem] text-dark" />
         ) : (
-          <MdOutlineKeyboardArrowRight className="text-[2.5rem] text-dark" />
+          <MdOutlineKeyboardArrowRight className="text-[1.8rem] md:text-[2.5rem] text-dark" />
         )}
       </div>
     </div>
