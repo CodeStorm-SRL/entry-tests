@@ -25,7 +25,7 @@ const AsyncImage: FC<AsyncImageProps> = ({ image, index }: AsyncImageProps) => {
           <Image
             src={image?.urls.regular}
             alt="#"
-            className="max-h-[100%]] aspect-square"
+            className="aspect-square"
             inView={inView}
             smallSrc={image?.urls.small}
           />
