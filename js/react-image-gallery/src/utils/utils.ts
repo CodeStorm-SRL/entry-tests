@@ -3,7 +3,7 @@ function dayOrMonthFormatter(dayOrMonth: string): string {
 }
 
 export function formatStringDate(date: string): string {
-  const formattedDate = new Intl.DateTimeFormat("en-EN", {
+  const formattedDate = new Intl.DateTimeFormat(navigator.language || "en-EN", {
     day: "numeric",
     month: "numeric",
     year: "numeric",
