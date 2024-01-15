@@ -42,7 +42,7 @@ const PhotoPage: FC = () => {
         if (e.key === "ArrowRight") nextImg();
         if (e.key === "Escape" && isDetailsOpen) {
           handleOpen();
-        } else {
+        } else if (e.key === "Escape" && !isDetailsOpen) {
           navigate("/photo");
         }
       }

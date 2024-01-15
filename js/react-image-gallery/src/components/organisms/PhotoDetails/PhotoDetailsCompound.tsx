@@ -11,7 +11,7 @@ import { formatStringDate } from "../../../utils/utils";
 
 export const Body: FC<DetailsBodyProps> = ({ onClose, children }) => {
   return (
-    <div className="w-[95%] sm:w-[80%] space-y-3 select-text">
+    <div className="w-[95%] sm:w-[80%] space-y-3 select-text relative">
       <Text
         onClick={onClose}
         className="inline-block p-3 cursor-pointer hover:translate-x-2 hover:text-primary"
