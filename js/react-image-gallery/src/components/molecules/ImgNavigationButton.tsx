@@ -16,8 +16,8 @@ const ImgNavigationButton: FC<ImgNavigationButtonProps> = ({
   onClick,
 }: ImgNavigationButtonProps) => {
   const styles: Record<directions, string> = {
-    left: "left-4 hover:-translate-x-1",
-    right: "right-4 hover:translate-x-1",
+    left: "left-1 md:left-4 hover:-translate-x-1",
+    right: "right-1 md:right-4 hover:translate-x-1",
   };
 
   const classNames = `rounded-full absolute inset-y-50 ${styles[direction]} z-50 opacity-70 cursor-pointer hover:opacity-100 p-4`;

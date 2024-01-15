@@ -8,7 +8,7 @@ import { useAppContext } from "../context/useAppContext";
 export const useImage = (id: number) => {
   const { images, isLoading, error } = useAppContext();
   const [indexImg, setIndexImg] = useState<number>(id);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // uso useCallback perchè dovrò usare queste
   // funzioni in un array di dipendenze di
@@ -32,9 +32,8 @@ export const useImage = (id: number) => {
   }, [indexImg, images?.length]);
 
   // toggle isOpen
-  function handleOpen(): void {
-    setIsOpen((isOpen) => !isOpen);
-  }
+  const handleOpen = useCallback(() => setIsOpen((isOpen) => !isOpen), []);
+
   return {
     isLoading,
     error,

@@ -6,12 +6,13 @@ import ImgNavigation from "../organisms/ImgNavigation";
 
 import { useImage } from "../../hooks/useImage";
 import { Navigate } from "react-router";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import Container from "../atoms/Container";
 
 // Con useImage setto l'index come
 // searchParam
 const PhotoPage: FC = () => {
+  const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const id = params.get("id");
   const numericId = id ? +id : null;
@@ -34,18 +35,33 @@ const PhotoPage: FC = () => {
       setParams(params);
 
       // se premo -> o <- cambia immagine
-      function handleKeyDown(e: KeyboardEvent): void {
-        e.stopPropagation();
+      // se premo Esc esce dai dettagli se aperti
+      // altrimenti torna alla main page
+      function handleKeyUp(e: KeyboardEvent): void {
         if (e.key === "ArrowLeft") prevImg();
         if (e.key === "ArrowRight") nextImg();
+        if (e.key === "Escape" && isDetailsOpen) {
+          handleOpen();
+        } else {
+          navigate("/photo");
+        }
       }
 
-      document.addEventListener("keyup", handleKeyDown);
+      document.addEventListener("keyup", handleKeyUp);
 
       // rimuovo l'evento all'unmount
-      return () => document.removeEventListener("keyup", handleKeyDown);
+      return () => document.removeEventListener("keyup", handleKeyUp);
     },
-    [indexImg, params, setParams, prevImg, nextImg]
+    [
+      indexImg,
+      params,
+      setParams,
+      prevImg,
+      nextImg,
+      isDetailsOpen,
+      handleOpen,
+      navigate,
+    ]
   );
 
   // Render/guard condizionali
@@ -59,14 +75,6 @@ const PhotoPage: FC = () => {
   return (
     <div className="relative flex items-center justify-center flex-grow">
       {isDetailsOpen ? (
-        // immagine
-        <ImgNavigation
-          src={image?.urls.regular}
-          handleOpen={handleOpen}
-          nextImg={nextImg}
-          prevImg={prevImg}
-        />
-      ) : (
         // dettagli
         <Container isDetails>
           <PhotoDetails
@@ -76,6 +84,14 @@ const PhotoPage: FC = () => {
             onClose={handleOpen}
           />
         </Container>
+      ) : (
+        // immagine
+        <ImgNavigation
+          src={image?.urls.regular}
+          handleOpen={handleOpen}
+          nextImg={nextImg}
+          prevImg={prevImg}
+        />
       )}
     </div>
   );

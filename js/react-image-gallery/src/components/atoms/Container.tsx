@@ -13,8 +13,8 @@ const Container: FC<Container> = ({
 }: Container) => {
   const { className: customClassName } = { ...attributes };
   const classNames = `${
-    isDetails ? "min-h-[80vh] p-2 md:py-5 pb-8" : "min-h-[50vh] p-5"
-  } mx-auto w-full max-w-[100vw] md:max-w-[1024px] bg-bg-container rounded-3xl  flex justify-center items-center ${
+    isDetails ? "min-h-[80vh] p-2 md:py-5 pb-8" : "min-h-[50vh] p-4 md:p-5"
+  } mx-auto w-full max-w-[90vw] md:max-w-[1024px] bg-bg-container rounded-3xl  flex justify-center items-center ${
     customClassName ? customClassName : ""
   }`;
 
