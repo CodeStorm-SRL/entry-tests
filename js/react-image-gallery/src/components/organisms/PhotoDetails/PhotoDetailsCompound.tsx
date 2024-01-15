@@ -33,8 +33,13 @@ export const Title: FC<DetailsTitleProps> = ({
       {userName && (
         <>
           <br className="md:hidden" />
-          <FaInstagram className="inline mb-1 text-2xl ms-0 md:ms-5 text-dark" />
-          /<span className="text-primary">{userName}</span>
+          <a href={"https://instagram.com/" + userName} target="_blank">
+            <FaInstagram className="inline mb-1 text-2xl ms-0 md:ms-5 text-dark" />
+            /
+            <span className="text-primary opacity-70 hover:opacity-100">
+              {userName}
+            </span>
+          </a>
         </>
       )}
     </Text>

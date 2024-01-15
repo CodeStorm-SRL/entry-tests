@@ -7,7 +7,8 @@ import { ImageObjectInterface } from "../../services/apiImages";
 import { useAppContext } from "../../context/useAppContext";
 import Container from "../atoms/Container";
 
-const classNames = "grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6";
+const classNames =
+  "grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6";
 
 const PhotoSection: FC = () => {
   const { error, images, isLoading } = useAppContext();
