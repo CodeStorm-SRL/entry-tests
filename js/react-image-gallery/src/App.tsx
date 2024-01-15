@@ -9,9 +9,11 @@ import AppContextProvider from "./context/appContext";
 // dell'app più veloce.
 // Il JS dei componenti verrà scaricato all'occorrenza
 import Loader from "./components/molecules/Loader";
+
 const AppLayout = lazy(() => import("./components/layout/AppLayout"));
 const MainPage = lazy(() => import("./components/page/MainPage"));
 const PhotoPage = lazy(() => import("./components/page/PhotoPage"));
+const NotFoundPage = lazy(() => import("./components/page/NotFoundPage"));
 
 // QueryClient di TanStack Query
 // Le query diventano stale dopo un'ora
@@ -39,6 +41,7 @@ function App() {
                 <Route path="/" element={<Navigate to="/photo" />} />
                 <Route path="/photo" element={<MainPage />} />
                 <Route path="/pic" element={<PhotoPage />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Route>
             </Routes>
           </Suspense>

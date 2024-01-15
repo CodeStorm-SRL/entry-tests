@@ -31,7 +31,10 @@ export const AppContext = createContext<ValueInterface>({
 });
 
 // Funzione reducer per useReducer
-function reducer(state: InitialStateInterface, action: Action) {
+function reducer(
+  state: InitialStateInterface,
+  action: Action
+): InitialStateInterface {
   switch (action.type) {
     case "darkMode":
       return { ...state, darkMode: !state.darkMode };
