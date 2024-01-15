@@ -7,10 +7,11 @@ import {
 import Text from "../../atoms/Text";
 import { FaInstagram } from "react-icons/fa";
 import DescriptionFields from "../../molecules/DescriptionFields";
+import { formatStringDate } from "../../../utils/utils";
 
 export const Body: FC<DetailsBodyProps> = ({ onClose, children }) => {
   return (
-    <div className="w-[95%] sm:w-[80%] space-y-3">
+    <div className="w-[95%] sm:w-[80%] space-y-3 select-text">
       <Text
         onClick={onClose}
         className="inline-block p-3 cursor-pointer hover:translate-x-2 hover:text-primary"
@@ -49,7 +50,9 @@ export const Description: FC<DetailsDescriptionProps> = ({
   return (
     <>
       <DescriptionFields field="Description">{children}</DescriptionFields>
-      <DescriptionFields field="Data">{data}</DescriptionFields>
+      <DescriptionFields field="Date">
+        {formatStringDate(data)}
+      </DescriptionFields>
       <DescriptionFields field="Location">{location}</DescriptionFields>
       <DescriptionFields field="Bio">{bio}</DescriptionFields>
     </>
