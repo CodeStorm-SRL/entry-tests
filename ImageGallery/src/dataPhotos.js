@@ -1,3 +1,5 @@
+// Creo l'array di oggetti che popolerà sia le immagini che i titoli che le descrizioni relative alle immagini
+
 export const dataPhotos = [
   {
     srcImage:

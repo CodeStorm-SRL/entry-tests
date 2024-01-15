@@ -9,7 +9,7 @@ import leftArrow from "../../assets/left-arrow.png";
 import rightArrow from "../../assets/right-arrow.png";
 
 export default function Gallery() {
-  //impoto lo useState
+  //importo lo useState
   const [actualPhoto, setActualPhoto] = useState(0);
   //creo la funzione di slideright. Aggiungerà 1 all'actualState che parte da 0. Avrà prima un controllo, se siamo arrivati in fondo non andrà in errore, bens' farà un return di niente
   function slideRightPhoto() {
@@ -32,6 +32,8 @@ export default function Gallery() {
   const [actualState, setActualState] = useState(true);
   //creo la funzione che mostri il modale con le descrizioni
   function showCaption() {
+    //la funzione controllerà lo state di actualState e lo cambierà al click del pulsante.
+
     if (actualState === false) {
       setActualState(true);
       console.log(actualState);
@@ -66,6 +68,7 @@ export default function Gallery() {
         </button>
         <article className={styles.caption}>
           <div>
+            {/* Il contenuto testuale di ogni immagine verrà mostrato dinamicamente tramite un controllo di actualState. Inizierà nascosto e ad ogni click cambierà da true a false per essere visibile o nascosto */}
             {!actualState ? (
               <div>
                 {" "}
