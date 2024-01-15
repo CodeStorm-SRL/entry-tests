@@ -25,7 +25,7 @@ const PhotoPage: FC = () => {
     prevImg, // precedente img
     isOpen: isDetailsOpen, // i dettagli sono aperti
     handleOpen, // apre/chiude i dettagli
-  } = useImage(numericId as number);
+  } = useImage(numericId || 0);
 
   useEffect(
     function () {
