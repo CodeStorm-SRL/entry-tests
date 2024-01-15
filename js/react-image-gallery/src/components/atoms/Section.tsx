@@ -17,7 +17,7 @@ const Section: FC<SectionProps> = ({
   const { className: customClassNames } = { ...attributes };
 
   const styles: Record<SectionType, string> = {
-    main: "flex-grow p-6 mx-auto w-full max-w-[1024px] bg-bg-container rounded-3xl",
+    main: "flex-grow flex justify-center items-center",
     section: "",
   };
 

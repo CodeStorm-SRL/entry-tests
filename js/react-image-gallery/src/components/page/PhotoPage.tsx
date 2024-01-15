@@ -1,5 +1,4 @@
 import { FC, useEffect } from "react";
-import Section from "../atoms/Section";
 import PhotoDetails from "../organisms/PhotoDetails/PhotoDetails";
 import Loader from "../molecules/Loader";
 import ErrorComponent from "../molecules/ErrorComponent";
@@ -8,6 +7,7 @@ import ImgNavigation from "../organisms/ImgNavigation";
 import { useImage } from "../../hooks/useImage";
 import { Navigate } from "react-router";
 import { useSearchParams } from "react-router-dom";
+import Container from "../atoms/Container";
 
 // Con useImage setto l'index come
 // searchParam
@@ -28,12 +28,27 @@ const PhotoPage: FC = () => {
 
   useEffect(
     function () {
+      // Quando indexImg cambia setto il nuovo
+      // param
       params.set("id", String(indexImg));
       setParams(params);
+
+      // se premo -> o <- cambia immagine
+      function handleKeyDown(e: KeyboardEvent): void {
+        e.stopPropagation();
+        if (e.key === "ArrowLeft") prevImg();
+        if (e.key === "ArrowRight") nextImg();
+      }
+
+      document.addEventListener("keyup", handleKeyDown);
+
+      // rimuovo l'evento all'unmount
+      return () => document.removeEventListener("keyup", handleKeyDown);
     },
-    [indexImg, params, setParams]
+    [indexImg, params, setParams, prevImg, nextImg]
   );
 
+  // Render/guard condizionali
   if (!images || !id) return <Navigate to="/" />;
   if (isLoading) return <Loader />;
   if (error) return <ErrorComponent />;
@@ -42,7 +57,7 @@ const PhotoPage: FC = () => {
   const image = images[indexImg];
 
   return (
-    <Section as="main" className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center flex-grow">
       {isDetailsOpen ? (
         // immagine
         <ImgNavigation
@@ -53,14 +68,16 @@ const PhotoPage: FC = () => {
         />
       ) : (
         // dettagli
-        <PhotoDetails
-          description={image.description}
-          user={image.user}
-          createdAt={image.created_at}
-          onClose={handleOpen}
-        />
+        <Container isDetails>
+          <PhotoDetails
+            description={image.description}
+            user={image.user}
+            createdAt={image.created_at}
+            onClose={handleOpen}
+          />
+        </Container>
       )}
-    </Section>
+    </div>
   );
 };
 

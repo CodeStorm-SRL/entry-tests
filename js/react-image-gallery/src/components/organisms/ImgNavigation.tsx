@@ -21,9 +21,14 @@ const ImgNavigation: FC<ImgNavigationProps> = ({
 }) => {
   return (
     <>
-      <Image
+      {/* <Image
         src={src}
         className="max-h-[400px] sm:max-h-[600px] 2xl:max-h-[800px] cursor-pointer"
+        onClick={handleOpen}
+      /> */}
+      <Image
+        src={src}
+        className="object-contain max-h-[85vh] cursor-pointer"
         onClick={handleOpen}
       />
       <ImgNavigationButton direction="right" onClick={nextImg} />

@@ -12,7 +12,7 @@ const DescriptionFields: FC<DescriptionFieldsProps> = ({
   if (!children) return null;
 
   return (
-    <Text>
+    <Text className="break-words">
       <b>{field}</b>: <i>{children}</i>
     </Text>
   );

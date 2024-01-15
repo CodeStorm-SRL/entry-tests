@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Header from "../Template/Header";
-import { Outlet } from "react-router";
 import { useAppContext } from "../../context/useAppContext";
+import Main from "../Template/Main";
 
 const AppLayout: FC = () => {
   const { darkMode } = useAppContext();
@@ -13,7 +13,7 @@ const AppLayout: FC = () => {
   return (
     <div className={classNames}>
       <Header />
-      <Outlet />
+      <Main />
     </div>
   );
 };
