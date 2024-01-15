@@ -1,3 +1,7 @@
+function dayOrMonthFormatter(dayOrMonth: string): string {
+  return +dayOrMonth < 10 ? "0" + dayOrMonth : dayOrMonth;
+}
+
 export function formatStringDate(date: string): string {
   const formattedDate = new Intl.DateTimeFormat("en-EN", {
     day: "numeric",
@@ -5,7 +9,8 @@ export function formatStringDate(date: string): string {
     year: "numeric",
   }).format(new Date(date));
 
-  const dayInt = +formattedDate.split("/")[0];
-
-  return dayInt < 10 ? "0" + formattedDate : formattedDate;
+  return formattedDate
+    .split("/")
+    .map((data) => dayOrMonthFormatter(data))
+    .join("/");
 }
