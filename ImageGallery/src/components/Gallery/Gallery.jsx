@@ -4,6 +4,10 @@ import { useState } from "react";
 //importo il file data che contiene l'array di oggetti contenenti le immagini con i rispettivi id
 import { dataPhotos } from "../../dataPhotos";
 
+//importo entrambi i png per lo slider
+import leftArrow from "../../assets/left-arrow.png";
+import rightArrow from "../../assets/right-arrow.png";
+
 export default function Gallery() {
   //impoto lo useState
   const [actualPhoto, setActualPhoto] = useState(0);
@@ -25,7 +29,7 @@ export default function Gallery() {
     console.log(actualPhoto);
   }
   //creo un secondo state per mostrare o meno le descrizioni delle foto
-  const [actualState, setActualState] = useState(false);
+  const [actualState, setActualState] = useState(true);
   //creo la funzione che mostri il modale con le descrizioni
   function showCaption() {
     if (actualState === false) {
@@ -38,30 +42,39 @@ export default function Gallery() {
   }
   return (
     <>
-      <section className={styles.gallery} id="externalGalleryContainer">
-        {/* creo un bottone che collega alla funzione di slide sinistra */}
-        <div className={styles.buttonsContainer}>
+      <section className={styles.galleryContainer}>
+        <section className={styles.gallery}>
+          {/* creo un bottone che collega alla funzione di slide sinistra */}
           <button className={styles.buttons} onClick={slideLeftPhoto}>
-            previous
+            <img className={styles.arrow} src={leftArrow} alt="" />
           </button>
+          {/* inserisco l'immagine che ha com src il valore src dell'array di oggetti data che ho creato e importato e come indice lo stato attuale */}
+          <img
+            // onClick={showCaption}
+            src={dataPhotos[actualPhoto].srcImage}
+            className={styles.sdgsImages}
+            alt=""
+          />
           {/* creo un bottone che collega alla funzione di slide destra */}
 
           <button className={styles.buttons} onClick={slideRightPhoto}>
-            next
+            <img className={styles.arrow} src={rightArrow} alt="" />
           </button>
-        </div>
-        {/* inserisco l'immagine che ha com src il valore src dell'array di oggetti data che ho creato e importato e come indice lo stato attuale */}
-        <img
-          // onClick={showCaption}
-          src={dataPhotos[actualPhoto].srcImage}
-          alt=""
-        />
-      </section>
-      <section className={styles.caption}>
-        <button onClick={showCaption}>Scopri di più</button>
-        <div>
-          {!actualState ? <p>{dataPhotos[actualPhoto].description}</p> : null}
-        </div>
+        </section>
+        <button className={styles.discoverMore} onClick={showCaption}>
+          Discover More
+        </button>
+        <article className={styles.caption}>
+          <div>
+            {!actualState ? (
+              <div>
+                {" "}
+                <h3>{dataPhotos[actualPhoto].id}</h3> <br />{" "}
+                <p>{dataPhotos[actualPhoto].description}</p>
+              </div>
+            ) : null}
+          </div>
+        </article>
       </section>
     </>
   );

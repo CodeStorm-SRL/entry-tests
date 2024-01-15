@@ -1,22 +1,50 @@
-.gallery {
-  max-width: 80dvw;
+.galleryContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.gallery img {
-  width: 65%;
-  height: 65%;
-}
-.buttonsContainer {
-  margin: 0.5rem 0 0.5rem 0;
+.gallery {
   display: flex;
-  justify-content: space-around;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.3rem;
 }
+.sdgsImages {
+  width: 75%;
+}
+
 .buttons {
-  background-color: red;
-  color: white;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  width: 12.5%;
+  height: 12.5%;
+  border: none;
+  transition: none;
 }
+
+.arrow {
+  width: 100%;
+  height: 100%;
+}
+.discoverMore {
+  margin: 3rem auto 3rem auto;
+}
+
 .caption {
+  margin: auto;
+  width: 65%;
+}
+
+@media screen and (min-width: 712px) {
+  .sdgsImages {
+    width: 50%;
+  }
+  .buttons {
+    width: 25%;
+    height: 25%;
+  }
+  .arrow {
+    width: 25%;
+    height: 25%;
+  }
 }
