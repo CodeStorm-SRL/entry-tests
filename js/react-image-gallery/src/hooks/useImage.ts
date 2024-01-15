@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../context/useAppContext";
 
 // Ritorna il dal context, l'index salvato come
@@ -33,6 +33,8 @@ export const useImage = (id: number) => {
 
   // toggle isOpen
   const handleOpen = useCallback(() => setIsOpen((isOpen) => !isOpen), []);
+
+  useEffect(function () {}, []);
 
   return {
     isLoading,

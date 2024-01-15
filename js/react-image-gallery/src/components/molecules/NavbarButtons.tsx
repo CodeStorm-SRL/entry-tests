@@ -4,8 +4,9 @@ import { FaSun } from "react-icons/fa";
 import { useAppContext } from "../../context/useAppContext";
 import { useBackToMainPage } from "../../hooks/useBackToMainPage";
 import { MdDarkMode } from "react-icons/md";
+import { FC } from "react";
 
-const NavbarButtons = () => {
+const NavbarButtons: FC = () => {
   const { dispatch, darkMode } = useAppContext();
   const { handleNavigate, isUserInPhotoPage } = useBackToMainPage();
 
