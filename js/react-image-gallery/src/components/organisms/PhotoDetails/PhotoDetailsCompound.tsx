@@ -29,9 +29,13 @@ export const Title: FC<DetailsTitleProps> = ({
   return (
     <Text as="h1" styledAs="h4">
       <b>Author</b>: <b className="text-primary">{authorName}</b>{" "}
-      <br className="md:hidden" />
-      <FaInstagram className="inline mb-1 text-2xl ms-0 md:ms-5 text-dark" />/
-      <span className="text-primary">{userName}</span>
+      {userName && (
+        <>
+          <br className="md:hidden" />
+          <FaInstagram className="inline mb-1 text-2xl ms-0 md:ms-5 text-dark" />
+          /<span className="text-primary">{userName}</span>
+        </>
+      )}
     </Text>
   );
 };
