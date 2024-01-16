@@ -18,12 +18,16 @@ export default {
 
       // Verifica se l'opzione selezionata è corretta confrontandola con la risposta corretta
       const isCorrect =
-        this.store.filmQuestions[this.store.currentQuestionIndex].selected ===
-        this.store.filmQuestions[this.store.currentQuestionIndex].options[
-          this.store.filmQuestions[this.store.currentQuestionIndex].answer
+        selectedOption ===
+        store.filmQuestions[store.currentQuestionIndex].options[
+          store.filmQuestions[store.currentQuestionIndex].answer
         ];
 
-      console.log(`L'opzione selezionata è corretta: ${isCorrect}`);
+      // Incrementa lo score se corretto
+      if (isCorrect) {
+        store.score++;
+      }
+      console.log(`Selected option is correct: ${isCorrect}`);
     },
 
     // # todo fare refactoring e tenere un controllo correttezza solo

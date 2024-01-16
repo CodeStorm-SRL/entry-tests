@@ -47,7 +47,9 @@ export default {
     <QuizQuestion />
     <QuizOptions />
     <button v-if="showNextButton" @click="nextQuestion">Next</button>
-    <p v-else>Hai finito il quiz!</p>
+    <p v-else>
+      Hai finito il quiz! Il tuo punteggio finale è: {{ store.score }}
+    </p>
   </div>
 </template>
 

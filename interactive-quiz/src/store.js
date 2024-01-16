@@ -2,7 +2,7 @@ import { reactive } from "vue";
 
 export const store = reactive({
   currentQuestionIndex: 0,
-
+  score: 0,
   filmQuestions: [
     {
       question: "🧙‍♂️📚🚂",
