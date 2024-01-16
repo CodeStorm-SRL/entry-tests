@@ -1,22 +1,35 @@
-<script>
-// import MyComponent from "./components/MyComponent.vue";
-
-export default {
-  data() {
-    return {
-      title: "Hello world",
-    };
-  },
-
-  // components: {
-  //   MyComponent,
-  // },
-};
-</script>
+<script></script>
 
 <template>
-  <h1>Hello Codestorm!</h1>
-  <router-link to="/quiz-page" class="my-router-link">Vai al quiz</router-link>
+  <div class="home-container">
+    <h1 class="home-title">Benvenuto su CodeStorm Quiz</h1>
+    <p class="home-subtitle">
+      Mettiti alla prova con questo divertente quiz sugli emoji dei film!
+    </p>
+    <router-link to="/quiz-page" class="main-btn">Inizia il Quiz</router-link>
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.home-container {
+  max-width: 800px;
+  margin: 10rem auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+</style>

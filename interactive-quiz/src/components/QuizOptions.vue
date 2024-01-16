@@ -13,19 +13,17 @@ export default {
     // Seleziona un'opzione e gestisce la logica di correttezza
     selectOption(selectedOption) {
       // Imposta l'opzione selezionata nel modulo store
-      this.store.filmQuestions[this.store.currentQuestionIndex].selected =
-        selectedOption;
+      const currentQuestion =
+        this.store.filmQuestions[this.store.currentQuestionIndex];
+      currentQuestion.selected = selectedOption;
 
       // Verifica se l'opzione selezionata è corretta confrontandola con la risposta corretta
       const isCorrect =
-        selectedOption ===
-        store.filmQuestions[store.currentQuestionIndex].options[
-          store.filmQuestions[store.currentQuestionIndex].answer
-        ];
+        selectedOption === currentQuestion.options[currentQuestion.answer];
 
       // Incrementa lo score se corretto
       if (isCorrect) {
-        store.score++;
+        this.store.score++;
       }
       console.log(`Selected option is correct: ${isCorrect}`);
     },
@@ -66,6 +64,7 @@ export default {
     <li v-for="(option, index) in currentQuestionOptions" :key="index">
       <button
         @click="selectOption(option)"
+        class="option-btn"
         :class="{
           correct:
             isOptionCorrect(option) &&
