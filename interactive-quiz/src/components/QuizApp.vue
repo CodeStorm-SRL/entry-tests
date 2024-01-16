@@ -1,21 +1,29 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
-
+import QuizQuestion from "./QuizQuestion.vue";
+import QuizOptions from "./QuizOptions.vue";
+import store from "../store";
 export default {
   data() {
     return {
-      title: "Quiz Component",
+      title: "Film Quiz",
+      store,
     };
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    QuizQuestion,
+    QuizOptions,
+  },
 };
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <div>
+    <h1>{{ title }}</h1>
+    <QuizQuestion />
+    <QuizOptions />
+    <button @click="nextQuestion">Next</button>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
