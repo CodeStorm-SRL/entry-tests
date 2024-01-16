@@ -124,7 +124,7 @@ answers:["T","F"]
 },
 {
     
-    question:"Il segnale raffigurato si trova esclusivamente all'inizio di una strada statalequestion",
+    question:"Il segnale raffigurato si trova esclusivamente all'inizio di una strada statale",
     image:questionYellowSymbol,
 correctAnswer:"F",
 answers:["T","F"]
@@ -132,7 +132,7 @@ answers:["T","F"]
 },
 {
     
-    question:"Dovendo attraversare l'incrocio rappresentato in figura il veicolo E deve dare la precedenza ai veicoli R e LQuestion",
+    question:"Dovendo attraversare l'incrocio rappresentato in figura il veicolo E deve dare la precedenza ai veicoli R e L",
     image:questionCrossing1,
 correctAnswer:"T",
 answers:["T","F"]
