@@ -1,10 +1,12 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import { reactive } from "vue";
+import store from "../store";
 
 export default {
   data() {
     return {
       title: "Quiz Question",
+      store,
     };
   },
 
@@ -15,7 +17,11 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <div>
+    <p v-if="store.filmQuestions && store.filmQuestions.length > 0">
+      Domanda: {{ store.filmQuestions[store.currentQuestionIndex].question }}
+    </p>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

@@ -14,6 +14,16 @@ export default {
     QuizQuestion,
     QuizOptions,
   },
+
+  methods: {
+    nextQuestion() {
+      // incrementa index domada
+      this.store.currentQuestionIndex++;
+
+      // resetta domanda selezionata ogni volta
+      this.store.filmQuestions[this.store.currentQuestionIndex].selected = null;
+    },
+  },
 };
 </script>
 
