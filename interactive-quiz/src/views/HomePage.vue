@@ -1,4 +1,16 @@
-<script></script>
+<script>
+export default {
+  methods: {
+    // navigaAQuizPage() {
+    //   // Naviga a /quiz-page
+    //   this.$router.push("/quiz-page").then(() => {
+    //     // Dopo la navigazione, ricarica la pagina
+    //     location.reload();
+    //   });
+    // },
+  },
+};
+</script>
 
 <template>
   <div class="home-container">

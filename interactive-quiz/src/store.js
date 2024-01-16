@@ -5,7 +5,7 @@ export const store = reactive({
   score: 0,
   filmQuestions: [
     {
-      question: "🧙‍♂️📚🚂",
+      question: "🧙‍♂️ 📚 🚂",
       answer: 1,
       options: [
         " Il Signore degli Anelli",
@@ -16,7 +16,7 @@ export const store = reactive({
       selected: null,
     },
     {
-      question: "🍫🏭🏭",
+      question: "🍫 🏭 🏭",
       answer: 1,
       options: [
         "Rambo",
@@ -27,13 +27,13 @@ export const store = reactive({
       selected: null,
     },
     {
-      question: "👨‍🚀🚀🌌",
+      question: "👨‍🚀 🚀 🌌",
       answer: 0,
       options: ["Interstellar", "Gravity", "The Martian", "Apollo 31"],
       selected: null,
     },
     {
-      question: "🐭🍜🏠",
+      question: "🐭 🍜 🏠",
       answer: 2,
       options: [
         "Stuart Little",
@@ -44,13 +44,13 @@ export const store = reactive({
       selected: null,
     },
     {
-      question: "🦁👑🌅",
+      question: "🦁 👑 🌅",
       answer: 3,
       options: ["The Jungle Book", "Madagascar", "Born Free", "The Lion King"],
       selected: null,
     },
     {
-      question: "👽📞🚲",
+      question: "👽 📞 🚲",
       answer: 0,
       options: [
         "E.T. the Extra-Terrestrial",
@@ -61,13 +61,13 @@ export const store = reactive({
       selected: null,
     },
     {
-      question: "🏹👧🔥",
+      question: "🏹 👧 🔥",
       answer: 2,
       options: ["Brave", "Mulan", "The Hunger Games", "The Princess Diaries"],
       selected: null,
     },
     {
-      question: "🚢🌊❄️",
+      question: "🚢 🌊 ❄️",
       answer: 3,
       options: [
         "The Perfect Storm",
@@ -78,7 +78,7 @@ export const store = reactive({
       selected: null,
     },
     {
-      question: "🏴‍☠️📜⛵️",
+      question: "🏴‍☠️ 📜 ⛵️",
       answer: 0,
       options: [
         "Pirates of the Caribbean",
@@ -89,7 +89,7 @@ export const store = reactive({
       selected: null,
     },
     {
-      question: "👸👠🕰️",
+      question: "👸 👠 🕰️",
       answer: 1,
       options: [
         "Beauty and the Beast",

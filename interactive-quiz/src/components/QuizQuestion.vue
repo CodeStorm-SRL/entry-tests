@@ -31,10 +31,16 @@ export default {
 
 <template>
   <div>
-    <p v-if="currentQuestion && currentQuestion.question">
+    <p class="question" v-if="currentQuestion && currentQuestion.question">
       Domanda: {{ store.filmQuestions[store.currentQuestionIndex].question }}
     </p>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.question {
+  margin: 10px auto;
+  font-size: 2rem;
+  font-weight: 700;
+}
+</style>

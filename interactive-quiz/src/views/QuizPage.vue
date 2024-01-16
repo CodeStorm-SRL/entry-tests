@@ -15,7 +15,9 @@ export default {
 </script>
 
 <template>
-  <QuizApp />
+  <div class="container">
+    <QuizApp />
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

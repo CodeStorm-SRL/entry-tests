@@ -61,7 +61,11 @@ export default {
 
 <template>
   <ul v-if="currentQuestionOptions.length > 0">
-    <li v-for="(option, index) in currentQuestionOptions" :key="index">
+    <li
+      v-for="(option, index) in currentQuestionOptions"
+      :key="index"
+      class="options-list"
+    >
       <button
         @click="selectOption(option)"
         class="option-btn"

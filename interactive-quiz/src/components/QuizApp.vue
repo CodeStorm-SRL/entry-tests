@@ -6,7 +6,7 @@ import store from "../store";
 export default {
   data() {
     return {
-      title: "Film Quiz",
+      title: "🍿 Emoji Film Quiz 🎬",
       store,
     };
   },
@@ -42,8 +42,8 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>{{ title }}</h1>
+  <div class="container">
+    <h1 class="title">{{ title }}</h1>
     <QuizQuestion />
     <QuizOptions />
     <button class="main-btn" v-if="showNextButton" @click="nextQuestion">
@@ -58,4 +58,8 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.title {
+  font-size: 4rem;
+}
+</style>
