@@ -8,6 +8,7 @@ export default {
       store,
     };
   },
+
   methods: {
     // Seleziona un'opzione e gestisce la logica di correttezza
     selectOption(selectedOption) {
@@ -25,7 +26,7 @@ export default {
       console.log(`L'opzione selezionata è corretta: ${isCorrect}`);
     },
 
-    
+    // # todo fare refactoring e tenere un controllo correttezza solo
     isOptionCorrect(option) {
       return (
         option ===
@@ -35,16 +36,30 @@ export default {
       );
     },
   },
+
+  computed: {
+    // controllo arrivo corretto delle opzioni
+    currentQuestionOptions() {
+      const currentQuestionIndex = store.currentQuestionIndex;
+      const filmQuestions = store.filmQuestions;
+
+      if (
+        currentQuestionIndex >= 0 &&
+        currentQuestionIndex < filmQuestions.length &&
+        filmQuestions[currentQuestionIndex].options
+      ) {
+        return filmQuestions[currentQuestionIndex].options;
+      } else {
+        return [];
+      }
+    },
+  },
 };
 </script>
 
 <template>
-  <ul v-if="store.filmQuestions && store.filmQuestions.length > 0">
-    <li
-      v-for="(option, index) in store.filmQuestions[store.currentQuestionIndex]
-        .options"
-      :key="index"
-    >
+  <ul v-if="currentQuestionOptions.length > 0">
+    <li v-for="(option, index) in currentQuestionOptions" :key="index">
       <button
         @click="selectOption(option)"
         :class="{
