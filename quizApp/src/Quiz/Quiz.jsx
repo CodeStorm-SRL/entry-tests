@@ -1,6 +1,9 @@
 import "./Quiz.css";
 import { quizAnswersQuestions } from "../dataQuiz";
+
 import { useState } from "react";
+//import useRef per tenere traccia delle risposte date
+import { useRef } from "react";
 
 //costruisco la logica della selezione random delle domande con il controllo che non sia già stata scelta
 //creo il numero random
@@ -8,28 +11,62 @@ import { useState } from "react";
 // console.log(randomNumber);
 
 export default function Quiz() {
-  //creo innanzitutto un arrayvuoto che verrà popolato dalle risposte
-  const userAnswers = [];
   //creo un metodo che crei un numero random e lo sostituisca alle src
   // console.log(actualIndex);
+  //utilizzo useState per aggiornare dinamicamente l'indice per cambiare le domande, in maniera randomica, al click del button next
   const [actualIndex, setActualIndex] = useState(0);
+  //aggiugno un altro useState per impedire all'utente di selezionare entrambe le risposte
+  const [blockState, setBlock] = useState(false);
+
+  //creo un useRef array inizale con il solo valore i di 0, perché è l'indice dal quale partiamo sempre, per poi scegliere randomicamente
+  const previuosQuestion = useRef([0]);
+  //creo innanzitutto un arrayvuoto che verrà popolato dalle risposte
+  let userAnswersStart = [0];
+  let userAnswersDef = [];
 
 
-  function changeIndex() {
-    const newIndex = Math.floor(Math.random() * quizAnswersQuestions.length)
-    setActualIndex(newIndex)
-    userAnswers.push(newIndex)
-    console.log(userAnswers);
+  //creo la funzione che rimuova i colori nel true / false
+  function cleanColorAnswers() {
+
+    document.getElementById('true').classList.remove('correct')
+    document.getElementById('true').classList.remove('wrong')
+    document.getElementById('false').classList.remove('correct')
+    document.getElementById('false').classList.remove('wrong')
   }
 
-  //scrivo una funzione che controllli la risposta se è corretta o meno e dia un feedback visivo
-  function check(e, answer) {
-    if (quizAnswersQuestions[actualIndex].correctAnswer === answer) {
-      e.target.classList.remove("correct")
-      e.target.classList.add("correct")
+  //creo la funzione che cambi l'index per cambiare domanda in maniera randomica, ma non ripetere la stessa
+
+  function changeIndex() {
+    //creo randomicamente un numero da 1 a 29, la lunghezza
+    const newIndex = Math.floor(Math.random() * quizAnswersQuestions.length);
+    console.log(previuosQuestion);
+    //controllo se l'indice randomico è contenuto in previous
+    if (previuosQuestion.current.includes(newIndex) === true) {
+      return;
     } else {
-      e.target.classList.remove("wrong")
-      e.target.classList.add("wrong")
+      previuosQuestion.current = [...previuosQuestion.current, newIndex];
+
+      setActualIndex(newIndex);
+    }
+    //ripulisco i true/ flase dai colori applicati
+    cleanColorAnswers()
+  }
+
+  //scrivo una funzione che controlli la risposta se è corretta o meno e dia un feedback visivo
+  function check(e, answer) {
+    //per evitare che l'utente selezioni più di una risposta, controllo prima il mio blockState che sia false, ossia come lo abbiamo impostato di default
+    if (blockState === false || previuosQuestion.lenght != 1) {
+      if (quizAnswersQuestions[actualIndex].correctAnswer === answer) {
+
+
+        e.target.classList.add("correct");
+        //una volta aggiunta la classe cambio il blockState in true, così l'utente non potrà scegliere un'altra ozpione
+        setBlock(true);
+      } else {
+
+        e.target.classList.add("wrong");
+        setBlock(true);
+      }
     }
   }
   return (
@@ -53,10 +90,12 @@ export default function Quiz() {
         <ul className="m-auto flex justify-evenly">
           <li>
             <button
-              className="bg-blue-500  text-white font-bold py-2 px-4 rounded"
               onClick={(e) => {
+
                 check(e, "T");
               }}
+              id="true"
+              className="bg-blue-500  text-white font-bold py-2 px-4 rounded"
             >
               {quizAnswersQuestions[actualIndex].answers[0]}
             </button>
@@ -64,8 +103,10 @@ export default function Quiz() {
           <li>
             <button
               onClick={(e) => {
+
                 check(e, "F");
               }}
+              id="false"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
               {quizAnswersQuestions[actualIndex].answers[1]}
