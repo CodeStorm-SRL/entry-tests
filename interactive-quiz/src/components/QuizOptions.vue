@@ -61,7 +61,11 @@ export default {
 
 <template>
   <ul v-if="currentQuestionOptions.length > 0">
-    <li v-for="(option, index) in currentQuestionOptions" :key="index">
+    <li
+      v-for="(option, index) in currentQuestionOptions"
+      :key="index"
+      class="options-list"
+    >
       <button
         @click="selectOption(option)"
         class="option-btn"
@@ -82,12 +86,26 @@ export default {
 
 <style lang="css" scoped>
 .correct {
-  background-color: green;
+  background-color: rgb(6, 190, 6);
   color: white;
+  animation: celebrate 1s linear infinite;
 }
 
 .incorrect {
-  background-color: red;
+  background-color: rgb(218, 90, 90);
   color: white;
+}
+
+/* Definizioni dell'animazione */
+@keyframes celebrate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
