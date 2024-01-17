@@ -40,7 +40,6 @@ export default {
           <th>Domanda</th>
           <th>Risposta</th>
           <th>Risposta data</th>
-          <!-- Nuova colonna -->
         </tr>
       </thead>
       <tbody>
@@ -66,7 +65,12 @@ export default {
 
 <style lang="css" scoped>
 .result {
-  margin: 20px auto;
+  margin: 3rem auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 /* stili per l'header */
 .header {
@@ -129,5 +133,35 @@ th {
 
 .correct-answer {
   border: 2px solid green;
+}
+
+/*  media query */
+@media (max-width: 768px) {
+  .result {
+    margin: 3rem 1.5rem;
+  }
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .result {
+    margin: 1.5rem 1.5rem;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 4px;
+  }
 }
 </style>

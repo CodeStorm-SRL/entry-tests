@@ -43,4 +43,13 @@ export default {
   font-size: 2rem;
   font-weight: 700;
 }
+
+/* Media query */
+@media (max-width: 768px) {
+  .question {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 5px auto;
+  }
+}
 </style>

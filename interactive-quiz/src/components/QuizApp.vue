@@ -49,17 +49,49 @@ export default {
     <button class="main-btn" v-if="showNextButton" @click="nextQuestion">
       Next
     </button>
-    <!-- <p v-else>
-      Hai finito il quiz! Il tuo punteggio finale è: {{ store.score }}
-    </p> -->
-    <router-link v-else to="/result-page" class="main-btn"
-      >scopri i risultati</router-link
-    >
+    <div v-else>
+      <iframe
+        src="https://giphy.com/embed/8UF0EXzsc0Ckg"
+        width="480"
+        height="288"
+        frameBorder="0"
+        allowFullScreen
+      ></iframe>
+      <p>
+        <router-link to="/result-page" class="main-btn"
+          >scopri i risultati</router-link
+        >
+      </p>
+    </div>
   </div>
 </template>
 
 <style lang="css" scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 15% auto;
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .title {
   font-size: 4rem;
+}
+
+iframe {
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Media query */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
 }
 </style>
