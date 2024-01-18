@@ -1,8 +1,8 @@
-*{
-    font-family: Montserrat, sans-serif;
-    margin: 0;
+* {
+  /* font-family: Montserrat, sans-serif; */
+  margin: 0;
 }
-body{
-    height: 100dvh;
-    background-color: pink;
+body {
+  height: 100dvh;
+  background-color: pink;
 }
