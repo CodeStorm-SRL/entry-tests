@@ -1,0 +1,42 @@
+<div clas="">
+  <div class="">
+      <div class="quiz-form">
+          <div class="">
+              <div class="">
+                  <div class="form-group">
+                      <h1>Result</h1>
+                      <hr>
+                      <div class="">
+                          <div class="">
+                              <div class="">{{finalResult?.total}}</div>
+                              <p>Total<br>Question</p>
+                          </div>
+                          <div class="">
+                              <div class="">{{finalResult?.correct}}</div>
+                              <p>Correct<br>Answers</p>
+                          </div>
+                          <div class="">
+                              <div class="">{{finalResult?.wrong}}</div>
+                              <p>Wrong<br>Answers</p>
+                          </div>
+                      </div>
+                      <div class="progress-stacked">
+                          <div class="progress" role="progressbar" aria-label="Segment one" [attr.aria-valuenow]="finalResult?.correctPercentage"
+                              aria-valuemin="0" aria-valuemax="100" [style.width]="finalResult?.correctPercentage+'%'">
+                              <div class="progress-bar">{{finalResult?.correctPercentage}}%</div>
+                          </div>
+                          <div class="progress" role="progressbar" aria-label="Segment two" [attr.aria-valuenow]="finalResult?.wrongPercentage"
+                              aria-valuemin="0" aria-valuemax="100" [style.width]="finalResult?.wrongPercentage+'%'">
+                              <div class="progress-bar bg-danger">{{finalResult?.wrongPercentage}}%</div>
+                          </div>
+                      </div>
+                      <br>
+                      <div class="form-btn text-center">
+                          <button class="" (click)="showMainMenu()">Main Menu</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
