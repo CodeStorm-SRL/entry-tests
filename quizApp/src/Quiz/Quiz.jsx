@@ -1,25 +1,23 @@
+//importo il css
 import "./Quiz.css";
+//importo l'array di oggeti contenente domande, risposte, risposte corrette e immagini
 import { quizAnswersQuestions } from "../dataQuiz";
-
+//importo useState per lo stato
 import { useState } from "react";
 //import useRef per tenere traccia delle risposte date
 import { useRef } from "react";
 
 export default function Quiz() {
-  //utilizzo useState per aggiornare dinamicamente l'indice per cambiare le domande, in maniera randomica, al click del button next
+  //utilizzo useState per aggiornare dinamicamente l'indice per cambiare le domande
   const [actualIndex, setActualIndex] = useState(0);
   //aggiugno un altro useState per impedire all'utente di selezionare entrambe le risposte
   const [blockState, setBlock] = useState(false);
-
-  //imposto uno useStaet per le domande corrette
+  //imposto un terzo useState per le domande corrette
   const [correctAnswers, setCorrectAnswers] = useState(0);
-
-  //creo un useRef array inizale con il solo valore i di 0, perché è l'indice dal quale partiamo sempre, per poi scegliere randomicamente
+  //creo un ultimo stato dimodoché la app capisca quando è finito il quiz.
+  const [completeState, setCompleteState] = useState(0);
+  //creo un useRef array inizale con il solo valore di di 0, perché è l'indice dal quale partiamo sempre, per poi scegliere randomicamente
   const previuosQuestion = useRef([0]);
-
-  //creo innanzitutto un arrayvuoto che verrà popolato dalle risposte
-  let userAnswersStart = [0];
-  let userAnswersDef = [];
 
   //creo la funzione che rimuova i colori nel true / false
   function cleanColorAnswers() {
@@ -29,54 +27,78 @@ export default function Quiz() {
     document.getElementById("false").classList.remove("wrong");
   }
 
-  //creo la funzione che cambi l'index per cambiare domanda in maniera randomica, ma non ripetere la stessa
-
+  //creo la funzione che cambi l'index per cambiare domanda in maniera randomica, ma non ripetere la stessa.
   function changeIndex() {
-    //reimposto il blockState al suo stato di default, il false
+    //reimposto il blockState al suo stato di default, il false. Questo è necessario per il funzionamento della funzione check()
     setBlock(false);
-
-    //creo randomicamente un numero da 0 a 29, la lunghezza
-    const newIndex = Math.floor(Math.random() * quizAnswersQuestions.length);
-    console.log(previuosQuestion);
-    //controllo se l'indice randomico è contenuto in previous. Se è contenuto faccio un return per non far succedere nulla
-    if (previuosQuestion.current.includes(newIndex) === true) {
-      return;
-    } else {
-      // se non è contenuto inserisco nell'array previousQuestion il nuovo indice tramite spread operator
-      previuosQuestion.current = [...previuosQuestion.current, newIndex];
-      //imposto quindi newIndex come state per far cambiare domanda
-      setActualIndex(newIndex);
+    //inizializzo un index vuoto (housato una stringa vuota per evitare di usare il numero 0)
+    let indexRandom = "";
+    //creo la funzione che mi restituisce un numero random tra 0 e 30
+    function randomIndex() {
+      let newIndex = Math.floor(Math.random() * quizAnswersQuestions.length);
+      //faccio equivalere la variabile vuota inizializzata sopra al numero creato
+      indexRandom = newIndex;
     }
+    //devo quindi ripetere la funzione randomIndex tante volte fino a che il numero che viene creato non è contenuto in previousQurstion, lo useref che mi tiene traccia delle domanda già fatte
+    //con do for riesco a far partire la funzione fintatnto che il numero è ontenuto nell'array dello useRef
+    do {
+      randomIndex();
+    } while (previuosQuestion.current.includes(indexRandom) === true);
+
+    // se non è contenuto inserisco nell'array previousQuestion il nuovo indice tramite spread operator
+    previuosQuestion.current = [...previuosQuestion.current, indexRandom];
+    //imposto quindi newIndex come state per far cambiare domanda
+    setActualIndex(indexRandom);
     //ripulisco i true/ flase dai colori applicati
     cleanColorAnswers();
-    console.log("Le risposte corrette sono ", correctAnswers);
+    //setto una condizione per quale se l'array di useRef è completo mi imposta lo stato di complete 30, che farà terminare il quiz
+    //lo state complete viene utilizzato solo a questo scopo. avrei potuto usare anche un booleano.
+    if (previuosQuestion.current.length === 30) {
+      setCompleteState(30);
+    }
   }
 
   //scrivo una funzione che controlli la risposta se è corretta o meno e dia un feedback visivo
   function check(e, answer) {
-    //creo una condizione più grande, se sono arrivato in fondo con le domande dovrò avere un risultato
-
-    //per evitare che l'utente selezioni più di una risposta, controllo prima il mio blockState che sia false, ossia come lo abbiamo impostato di default
+    //per evitare che l'utente selezioni più di una risposta, controllo prima il mio blockState che sia false, ossia come è impostato di default
     if (blockState === false) {
+      //se passa la condizione ne imposto un'altra: se la risposta cliccata equivale alla domanda corretta:
       if (quizAnswersQuestions[actualIndex].correctAnswer === answer) {
+        //aggiungiamo la classe correct al button, che si colorerà di verde
         e.target.classList.add("correct");
-        //una volta aggiunta la classe cambio il blockState in true, così l'utente non potrà scegliere un'altra ozpione
         //se la risposta è corretta aumento di 1 lo useState delle risposte corrette
         setCorrectAnswers((correctAnswers) => correctAnswers + 1);
+        //una volta aggiunta la classe e aggiunta la risposta corretta acambio il blockState in true, così l'utente non potrà scegliere un'altra opzione
         setBlock(true);
       } else {
+        //aggiungiamo la classe wrong al button, che si colorerà di rosso
+
         e.target.classList.add("wrong");
         setBlock(true);
       }
-      console.log(blockState);
     }
+  }
+  //creo una funzione che refreshi la pagina, per poter ricominciare il quiz
+  function pageReload() {
+    window.location.reload(true);
   }
   return (
     <>
-      {/* to fix: non funziona la comparazione tra lunghezza array e 30. provato amche il -1  */}
-      {previuosQuestion.lenght === 30 ? (
+      {/* imposto un ternary: se completeState equivale a 30 allora il quiz è terminato ed avremo i risultati. Il ternary ha 3 condizioni: se è finito e l'utente ha fatto più di 3 errori verrà detto lui che è bocciato e potrà ricominciare, se ha fatto meno di 4 errori sarà stato promosso e potrà ricominciare, la terza condizione riconosce che il quiz non è finito e va avanti*/}
+      {completeState === 30 && correctAnswers > 26 ? (
         <>
-          <h1>Finito! Hai azzeccato {correctAnswers} domande</h1>
+          <h1>
+            Quiz completato. Sei passato! Hai fatto {30 - correctAnswers} errori
+          </h1>
+          <button onClick={pageReload}>Ricomincia Quiz</button>
+        </>
+      ) : completeState === 30 && correctAnswers <= 26 ? (
+        <>
+          <h1>
+            Quiz completato. Purtroppo sei bocciato.... Hai fatto{" "}
+            {30 - correctAnswers} errori
+          </h1>
+          <button onClick={pageReload}>Ricomincia Quiz</button>
         </>
       ) : (
         <>
