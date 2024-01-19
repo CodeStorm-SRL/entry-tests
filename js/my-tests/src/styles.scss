@@ -3,3 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 @import '~@angular/cdk/overlay-prebuilt.css';
+
+body{
+  background-color: #202a44;
+}
