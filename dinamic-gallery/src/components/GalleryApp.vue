@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       title: "Galleria Immagini",
+      currentIndex: 0,
     };
   },
   computed: {
@@ -19,22 +20,33 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
-  <div class="gallery-grid">
-    <ImageApp v-for="image in images" :key="image.id" :image="image" />
+  <div>
+    <h1>{{ title }}</h1>
+    <div class="gallery-carousel">
+      <div class="carousel-inner">
+        <ImageApp v-for="image in images" :key="image.id" :image="image" />
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="css" scoped>
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+.gallery-carousel {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
 }
 
-.gallery-grid img {
+.carousel-inner {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallery-carousel img {
   width: 100%;
   height: auto;
   border-radius: 8px;
+  margin: 0 10px;
 }
 </style>
