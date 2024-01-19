@@ -6,8 +6,10 @@ export default {
     return {
       showTitleOnHover: false,
       modalVisible: false,
+      currentImageIndex: 0,
     };
   },
+  // NON PRENDE LA MODALE GIUSTA!
 
   methods: {
     showTitle() {
@@ -18,9 +20,21 @@ export default {
     },
     openModal() {
       this.modalVisible = true;
+      this.currentImageIndex = this.$store.state.images.findIndex(
+        (img) => img.id === this.image.id
+      );
     },
     closeModal() {
       this.modalVisible = false;
+    },
+    prevImage() {
+      this.currentImageIndex =
+        (this.currentImageIndex - 1 + this.$store.state.images.length) %
+        this.$store.state.images.length;
+    },
+    nextImage() {
+      this.currentImageIndex =
+        (this.currentImageIndex + 1) % this.$store.state.images.length;
     },
   },
 };
@@ -40,9 +54,18 @@ export default {
 
     <div v-if="modalVisible" class="modal" @click="closeModal">
       <div class="modal-content">
-        <img :src="image.url" alt="Modal Image" />
-        <div class="modal-title">{{ image.title }}</div>
-        <div class="modal-description">{{ image.description }}</div>
+        <button @click.stop="prevImage" class="nav-button">←</button>
+        <img
+          :src="$store.state.images[currentImageIndex].url"
+          alt="Modal Image"
+        />
+        <button @click.stop="nextImage" class="nav-button">→</button>
+        <div class="modal-title">
+          {{ $store.state.images[currentImageIndex].title }}
+        </div>
+        <div class="modal-description">
+          {{ $store.state.images[currentImageIndex].description }}
+        </div>
       </div>
     </div>
   </div>
@@ -119,5 +142,16 @@ export default {
   right: 10px;
   color: #fff;
   font-size: 14px;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
 }
 </style>
