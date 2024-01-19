@@ -23,7 +23,7 @@ export class QuizComponent {
   @ViewChild('result',{static:true}) result! : ResultComponent;
 
   constructor(private quizService:QuizService){
-    this.questionsLimit = 10;
+    this.questionsLimit = 5;
     this.difficulty = "Easy"
     this.showMainMenu = true;
   }
