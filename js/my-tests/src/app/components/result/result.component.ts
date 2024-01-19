@@ -7,11 +7,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ResultComponent {
 
-  @Output() showMainMenuScreen = new EventEmitter()
+  @Output() showMainMenuScreen = new EventEmitter() // Crea un evento per ritornare al menu principale
 
   public finalResult : any;
 
   showMainMenu(){
-    this.showMainMenuScreen.emit(true);
+    this.showMainMenuScreen.emit(true); // Emittente dell'evento per mostrare il menu principale
   }
 }
