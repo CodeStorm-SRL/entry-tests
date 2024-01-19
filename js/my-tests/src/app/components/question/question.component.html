@@ -1,0 +1,58 @@
+<div class="container bg-blue-900 p-10 text-white">
+  <div class="col-md-9 mx-auto">
+      <div class="quiz-form">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group" *ngIf="selected.question">
+                      <h1 class="font-bold text-2xl">Questions</h1>
+                      <hr>
+                      <p class="text-center text-3xl"><b>{{index + 1}}.</b>{{selected.question}}</p>
+
+                      <div class="flex-col justify-between items-center">
+                      <div *ngIf="selected.answers.answer_a" class="mt-3 ">
+                          <input type="radio" id="answer_a" class="hidden peer" name="answer" autocomplete="off"
+                          value="answer_a_correct" [(ngModel)]="answer">
+                          <label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-yellow-400 peer-checked:text-white peer-checked:bg-blue-600 hover:text-white hover:bg-blue-400 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="answer_a">{{selected.answers.answer_a}}</label><br><br>
+                      </div>
+
+                      <div *ngIf="selected.answers.answer_b" class="mt-3 ">
+                          <input type="radio" id="answer_b" class="hidden peer" name="answer" autocomplete="off"
+                          value="answer_b_correct" [(ngModel)]="answer">
+                          <label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-yellow-400 peer-checked:text-white peer-checked:bg-blue-600 hover:text-white hover:bg-blue-400 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="answer_b">{{selected.answers.answer_b}}</label><br><br>
+                      </div>
+
+                      <div *ngIf="selected.answers.answer_c" class="mt-3 ">
+                          <input type="radio" id="answer_c" class="hidden peer" name="answer" autocomplete="off"
+                          value="answer_c_correct" [(ngModel)]="answer">
+                          <label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-yellow-400 peer-checked:text-white peer-checked:bg-blue-600 hover:text-white hover:bg-blue-400 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="answer_c">{{selected.answers.answer_c}}</label><br><br>
+                      </div>
+
+                      <div *ngIf="selected.answers.answer_d" class="mt-3 ">
+                          <input type="radio" id="answer_d" class="hidden peer" name="answer" autocomplete="off"
+                          value="answer_d_correct" [(ngModel)]="answer">
+                          <label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-yellow-400 peer-checked:text-white peer-checked:bg-blue-600 hover:text-white hover:bg-blue-400 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="answer_d">{{selected.answers.answer_d}}</label><br><br>
+                      </div>
+
+                      <div *ngIf="selected.answers.answer_e" class="mt-3 ">
+                          <input type="radio" id="answer_e" class="hidden peer" name="answer" autocomplete="off"
+                          value="answer_e_correct" [(ngModel)]="answer">
+                          <label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-yellow-400 peer-checked:text-white peer-checked:bg-blue-600 hover:text-white hover:bg-blue-400 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="answer_e">{{selected.answers.answer_e}}</label><br><br>
+                      </div>
+
+                      <div *ngIf="selected.answers.answer_f" class="mt-3 ">
+                          <input type="radio" id="answer_f" class="hidden peer" name="answer" autocomplete="off"
+                          value="answer_f_correct" [(ngModel)]="answer">
+                          <label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-yellow-400 peer-checked:text-white peer-checked:bg-blue-600 hover:text-white hover:bg-blue-400 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="answer_f">{{selected.answers.answer_f}}</label><br><br>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-btn flex justify-end mt-7">
+                      <button class="relative inline-flex items-center justify-center py-3 px-6 mb-2 me-2 overflow-hidden text-sm font-medium text-white rounded-full group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+                      (click)="nextQuestion()">{{questions.length === (index+1)?'Finish':'Next'}}</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
