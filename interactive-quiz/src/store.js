@@ -1,8 +1,12 @@
+// Import della funzione reactive da Vue per creare uno store reattivo
 import { reactive } from "vue";
 
 export const store = reactive({
+  // Indice della domanda corrente nel quiz
   currentQuestionIndex: 0,
+  // Punteggio dell'utente
   score: 0,
+  // Array di domande per il quiz con risposte e opzioni
   filmQuestions: [
     {
       question: "🧙‍♂️ 📚 🚂",
@@ -13,7 +17,7 @@ export const store = reactive({
         "Il Mago di Oz",
         "The Chronicles of Narnia",
       ],
-      selected: null,
+      selected: null, // La risposta selezionata dall'utente
     },
     {
       question: "🍫 🏭 🏭",

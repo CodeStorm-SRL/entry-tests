@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+# Dinamic Gallery
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### Tramite il link qui sotto è possibile vedere la demo video del progetto e gli screenshot delle parti piu importanti.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[Demo del Progetto](https://drive.google.com/drive/folders/1vtzPyBkuK_TywRBBS7k98mtHIQd80W4k?usp=drive_link)
