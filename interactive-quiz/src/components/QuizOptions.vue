@@ -1,5 +1,4 @@
 <script>
-import { reactive } from "vue";
 import store from "../store";
 
 export default {
@@ -28,7 +27,7 @@ export default {
       console.log(`Selected option is correct: ${isCorrect}`);
     },
 
-    // # todo fare refactoring e tenere un controllo correttezza solo
+    // Verifica se l'opzione selezionata è corretta
     isOptionCorrect(option) {
       return (
         option ===
@@ -50,8 +49,9 @@ export default {
         currentQuestionIndex < filmQuestions.length &&
         filmQuestions[currentQuestionIndex].options
       ) {
-        return filmQuestions[currentQuestionIndex].options;
+        return filmQuestions[currentQuestionIndex].options; // Restituisce le opzioni della domanda corrente se sono presenti
       } else {
+        // Se l'indice non è valido o non ci sono opzioni, restituisce un array vuoto
         return [];
       }
     },
@@ -60,12 +60,14 @@ export default {
 </script>
 
 <template>
+  <!-- Itera sulle opzioni della domanda corrente -->
   <ul v-if="currentQuestionOptions.length > 0">
     <li
       v-for="(option, index) in currentQuestionOptions"
       :key="index"
       class="options-list"
     >
+      <!-- Bottone per selezionare un'opzione -->
       <button
         @click="selectOption(option)"
         class="option-btn"

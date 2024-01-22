@@ -46,9 +46,11 @@ export default {
     <h1 class="title">{{ title }}</h1>
     <QuizQuestion />
     <QuizOptions />
+    <!-- Bottone "Next" che viene visualizzato solo se showNextButton è true -->
     <button class="main-btn" v-if="showNextButton" @click="nextQuestion">
       Next
     </button>
+    <!-- Contenuto visualizzato quando showNextButton è false -->
     <div v-else>
       <iframe
         src="https://giphy.com/embed/8UF0EXzsc0Ckg"
@@ -57,6 +59,7 @@ export default {
         frameBorder="0"
         allowFullScreen
       ></iframe>
+      <!-- Link per navigare alla pagina dei risultati -->
       <p>
         <router-link to="/result-page" class="main-btn"
           >scopri i risultati</router-link

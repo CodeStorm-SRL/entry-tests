@@ -6,9 +6,9 @@ export default {
   data() {
     return {
       title: "Destinazioni consigliate:",
-      currentIndex: 0,
     };
   },
+  // Dichiarazione delle computed properties usando mapState per ottenere lo stato 'images' dallo store Vuex
   computed: {
     ...mapState(["images"]),
   },
@@ -24,6 +24,7 @@ export default {
     <h1>{{ title }}</h1>
     <div class="gallery-carousel">
       <div class="carousel-inner">
+        <!-- Utilizza v-for per iterare sulle immagini e passa ogni immagine al componente ImageApp -->
         <ImageApp v-for="image in images" :key="image.id" :image="image" />
       </div>
     </div>

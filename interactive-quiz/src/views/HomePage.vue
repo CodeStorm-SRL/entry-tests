@@ -32,7 +32,6 @@
 </template>
 
 <style lang="css" scoped>
-/* Add margin in visualizzazione mobile */
 .home-container {
   display: flex;
   flex-direction: column;

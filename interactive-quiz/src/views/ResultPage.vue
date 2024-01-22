@@ -1,19 +1,22 @@
 <script>
+// Importa il modulo store contenente lo stato dell'applicazione
 import store from "../store";
 
 export default {
   data() {
     return {
       title: "Ecco i risultati!",
-      store,
+      store, // Oggetto Vuex store per accedere allo stato dell'applicazione
     };
   },
+  // Computed property per ottenere il punteggio finale dallo store
   computed: {
     finalScore() {
       return this.store.score;
     },
   },
   methods: {
+    // Verifica se la risposta data a una domanda è corretta
     isAnswerCorrect(question) {
       return question.options[question.answer] === question.selected;
     },
@@ -25,6 +28,8 @@ export default {
   <div class="container result">
     <div class="header">
       <h1>{{ title }}</h1>
+
+      <!-- Visualizza il punteggio finale e un emoji in base al risultato -->
       <p>
         Hai finito il quiz! Il tuo punteggio finale è: {{ finalScore }}
         <span v-if="finalScore == 0">😖</span>
@@ -34,6 +39,7 @@ export default {
       </p>
     </div>
 
+    <!-- Tabella che mostra le domande, le risposte corrette e le risposte date -->
     <table>
       <thead>
         <tr>
@@ -43,9 +49,11 @@ export default {
         </tr>
       </thead>
       <tbody>
+        <!-- Itera sulle domande e visualizza le informazioni nella tabella -->
         <tr v-for="(question, index) in store.filmQuestions" :key="index">
           <td class="question">{{ question.question }}</td>
           <td>{{ question.options[question.answer] }}</td>
+          <!-- Applica classi dinamiche in base alla correttezza della risposta -->
           <td
             :class="{
               'correct-answer': isAnswerCorrect(question),
@@ -58,7 +66,7 @@ export default {
         </tr>
       </tbody>
     </table>
-
+    <!-- Link per tornare alla home -->
     <a href="/" class="main-btn">Torna alla home</a>
   </div>
 </template>
@@ -72,6 +80,7 @@ export default {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 /* stili per l'header */
 .header {
   background-color: #4caf50;
@@ -135,7 +144,7 @@ th {
   border: 2px solid green;
 }
 
-/*  media query */
+/********************  media query ******************/
 @media (max-width: 768px) {
   .result {
     margin: 3rem 1.5rem;

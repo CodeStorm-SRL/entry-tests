@@ -1,37 +1,50 @@
 <script>
 export default {
+  // Definizione delle props che il componente può ricevere
   props: ["image"],
 
   data() {
     return {
-      showTitleOnHover: false,
-      modalVisible: false,
-      currentImageIndex: 0,
+      showTitleOnHover: false, // Indica se il titolo deve essere mostrato quando il mouse è sopra l'immagine
+      modalVisible: false, // Indica se la finestra modale è visibile o no
+      currentImageIndex: 0, // Indice dell'immagine corrente nella finestra modale
     };
   },
-  // NON PRENDE LA MODALE GIUSTA!
 
   methods: {
+    // Mostra il titolo quando il mouse è sopra l'immagine
     showTitle() {
       this.showTitleOnHover = true;
     },
+
+    // Nasconde il titolo quando il mouse esce dall'immagine
     hideTitle() {
       this.showTitleOnHover = false;
     },
+
+    // Apre la finestra modale e imposta l'indice dell'immagine corrente
     openModal() {
       this.modalVisible = true;
       this.currentImageIndex = this.$store.state.images.findIndex(
         (img) => img.id === this.image.id
       );
     },
+
+    // Chiude la finestra modale
     closeModal() {
       this.modalVisible = false;
     },
+
+    // Comandi della modale
+
+    // Vai all'immagine precedente
     prevImage() {
       this.currentImageIndex =
         (this.currentImageIndex - 1 + this.$store.state.images.length) %
         this.$store.state.images.length;
     },
+
+    // Vai all'immagine successiva
     nextImage() {
       this.currentImageIndex =
         (this.currentImageIndex + 1) % this.$store.state.images.length;
@@ -42,6 +55,7 @@ export default {
 
 <template>
   <div>
+    <!-- Card che mostra l'immagine e il titolo quando il mouse è in hover -->
     <div
       class="card"
       @mouseover="showTitle"
@@ -52,19 +66,16 @@ export default {
       <div v-if="showTitleOnHover" class="card-title">{{ image.title }}</div>
     </div>
 
+    <!-- Finestra modale che mostra l'immagine, il titolo e la descrizione -->
     <div v-if="modalVisible" class="modal" @click="closeModal">
-      <!-- <div class="modal-content">
-       
-       
-        
-      </div> -->
       <img
         :src="$store.state.images[currentImageIndex].url"
         alt="Modal Image"
       />
       <div class="container">
+        <!-- Pulsante per andare all'immagine precedente -->
         <button @click.stop="prevImage" class="nav-button">←</button>
-
+        <!-- Titolo e descrizione dell'immagine corrente -->
         <div class="modal-text">
           <h2 class="modal-title">
             {{ $store.state.images[currentImageIndex].title }}
@@ -73,7 +84,7 @@ export default {
             {{ $store.state.images[currentImageIndex].description }}
           </p>
         </div>
-
+        <!-- Pulsante per andare all'immagine successiva -->
         <button @click.stop="nextImage" class="nav-button">→</button>
       </div>
     </div>
@@ -81,6 +92,7 @@ export default {
 </template>
 
 <style lang="css" scoped>
+/********************** Stile card **********************/
 .card {
   position: relative;
   margin: 20px 0;
@@ -111,7 +123,7 @@ export default {
   font-weight: bold;
 }
 
-/* Stile modale */
+/*********************** Stile modale ***********************/
 
 .modal {
   z-index: 100;

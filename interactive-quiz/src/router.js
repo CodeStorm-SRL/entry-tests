@@ -4,6 +4,7 @@ import Homepage from "./views/HomePage.vue";
 import QuizPage from "./views/QuizPage.vue";
 import ResultPage from "./views/ResultPage.vue";
 
+// Gestione rotte delle views
 const router = createRouter({
   history: createWebHistory(),
   routes: [
